@@ -17,14 +17,11 @@ class StripNewlines extends AbstractFilter
      *
      * Returns $value without newline control characters
      *
-     * @param  string|array $value
-     * @return string|array
+     * @param  string $value
+     * @return string
      */
     public function filter($value)
     {
-        if (!is_scalar($value) && !is_array($value)) {
-            return $value;
-        }
         return str_replace(array("\n", "\r"), '', $value);
     }
 }

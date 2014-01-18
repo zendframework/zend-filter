@@ -133,9 +133,7 @@ class Bz2 extends AbstractCompressionAlgorithm
     public function decompress($content)
     {
         $archive = $this->getArchive();
-
-        //check if there are null byte characters before doing a file_exists check
-        if (!strstr($content, "\0") && file_exists($content)) {
+        if (file_exists($content)) {
             $archive = $content;
         }
 

@@ -67,7 +67,7 @@ class Callback extends AbstractFilter
     /**
      * Sets parameters for the callback
      *
-     * @param  array $params
+     * @param  mixed $params
      * @return self
      */
     public function setCallbackParams($params)

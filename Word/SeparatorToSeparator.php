@@ -78,15 +78,11 @@ class SeparatorToSeparator extends AbstractFilter
      *
      * Returns the string $value, replacing the searched separators with the defined ones
      *
-     * @param  string|array $value
-     * @return string|array
+     * @param  string $value
+     * @return string
      */
     public function filter($value)
     {
-        if (!is_scalar($value) && !is_array($value)) {
-            return $value;
-        }
-
         if ($this->searchSeparator == null) {
             throw new Exception\RuntimeException('You must provide a search separator for this filter to work.');
         }
