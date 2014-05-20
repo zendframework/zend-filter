@@ -46,12 +46,10 @@ class StringTrim extends AbstractFilter
      */
     public function setCharList($charList)
     {
-        if (! strlen($charList)) {
+        if (empty($charList)) {
             $charList = null;
         }
-
         $this->options['charlist'] = $charList;
-
         return $this;
     }
 
