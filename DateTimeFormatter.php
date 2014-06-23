@@ -3,7 +3,7 @@
  * Zend Framework (http://framework.zend.com/)
  *
  * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright Copyright (c) 2005-2013 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
@@ -23,7 +23,7 @@ class DateTimeFormatter extends AbstractFilter
     /**
      * Sets filter options
      *
-     * @param array|\Traversable $options
+     * @param array|Traversable $options
      */
     public function __construct($options = null)
     {
@@ -41,14 +41,13 @@ class DateTimeFormatter extends AbstractFilter
     public function setFormat($format)
     {
         $this->format = $format;
-
         return $this;
     }
 
     /**
      * Filter a datetime string by normalizing it to the filters specified format
      *
-     * @param  DateTime|string|integer $value
+     * @param  string $value
      * @throws Exception\InvalidArgumentException
      * @return string
      */
@@ -59,10 +58,6 @@ class DateTimeFormatter extends AbstractFilter
         } catch (\Exception $e) {
             // DateTime threw an exception, an invalid date string was provided
             throw new Exception\InvalidArgumentException('Invalid date string provided', $e->getCode(), $e);
-        }
-
-        if ($result === false) {
-            return $value;
         }
 
         return $result;
@@ -78,14 +73,7 @@ class DateTimeFormatter extends AbstractFilter
     {
         if ($value === '' || $value === null) {
             return $value;
-        }
-
-        if (!is_string($value) && !is_int($value) && !$value instanceof DateTime) {
-            return $value;
-        }
-
-        if (is_int($value)) {
-            //timestamp
+        } elseif (is_int($value)) {
             $value = new DateTime('@' . $value);
         } elseif (!$value instanceof DateTime) {
             $value = new DateTime($value);

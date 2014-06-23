@@ -3,7 +3,7 @@
  * Zend Framework (http://framework.zend.com/)
  *
  * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright Copyright (c) 2005-2013 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
@@ -184,12 +184,13 @@ class Zip extends AbstractCompressionAlgorithm
      */
     public function decompress($content)
     {
-        $archive = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, realpath($content));
+        $archive = $this->getArchive();
 
         if (empty($archive) || !file_exists($archive)) {
             throw new Exception\RuntimeException('ZIP Archive not found');
         }
 
+        $archive = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, realpath($content));
         $zip     = new ZipArchive();
         $res     = $zip->open($archive);
 
