@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="shortcut icon" href="../img/favicon.ico">
+
+    <title>Intro - zend-filter</title>
+
+    <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic,700&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/zf.css" rel="stylesheet">
+    <link href="../css/prism-zf.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <span class="navbar-brand">
+              <a href="http://framework.zend.com"><img src="../img/zf-logo-mark.png" height="28" alt="Zend Framework" /></a>
+              <a href="..">zend-filter</a>
+            </span>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="..">Home</a>
+                    </li>
+                
+                
+                
+                    <li class="active">
+                        <a href="./">Intro</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../standard-filters/">Standard Filters</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../word/">Word Filters</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../file/">File Filters</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../filter-chains/">Filter Chains</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../inflector/">String Inflection</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../static-filter/">Static Filter</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../writing-filters/">Writing Filters</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li >
+                        <a rel="prev" href="..">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../standard-filters/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a href="https://github.com/zendframework/zend-filter">
+                            
+                                <i class="fa fa-github"></i>
+                            
+                            GitHub
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <!-- content:begin -->
+    <div class="container">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#introduction">Introduction</a></li>
+        
+            <li><a href="#what-is-a-filter">What is a filter?</a></li>
+        
+            <li><a href="#basic-usage-of-filters">Basic usage of filters</a></li>
+        
+            <li><a href="#using-the-staticfilter">Using the StaticFilter</a></li>
+        
+            <li><a href="#double-filtering">Double filtering</a></li>
+        
+    
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<ol class="breadcrumb" role="navigation" aria-label="breadcrumbs navigation">
+  <li><a href="..">Docs</a> &raquo;</li>
+  
+    
+  
+  <li class="active">Intro</li>
+</ol>
+
+<nav class="hidden-lg">
+  <ul class="pager">
+    <li class="previous">
+      <a rel="prev" href=".."><i class="fa fa-arrow-left"></i> Previous</a>
+    </li>
+    <li class="next">
+      <a rel="next" href="../standard-filters/">Next <i class="fa fa-arrow-right"></i></a>
+    </li>
+  </ul>
+</nav>
+
+<h1 id="introduction">Introduction</h1>
+<p>zend-filter provides a set of commonly needed data filters. It also provides a
+simple filter chaining mechanism by which multiple filters may be applied to a
+single datum in a user-defined order.</p>
+<h2 id="what-is-a-filter">What is a filter?</h2>
+<p>In the physical world, a filter is typically used for removing unwanted portions
+of input, and the desired portion of the input passes through as filter output
+(e.g., coffee). In such scenarios, a filter is an operator that produces a
+subset of the input. This type of filtering is useful for web applications:
+removing illegal input, trimming unnecessary white space, etc.</p>
+<p>This basic definition of a filter may be extended to include generalized
+transformations upon input. A common transformation applied in web applications
+is the escaping of HTML entities. For example, if a form field is automatically
+populated with untrusted input (e.g., from a web browser), this value should
+either be free of HTML entities or contain only escaped HTML entities, in order
+to prevent undesired behavior and security vulnerabilities. To meet this
+requirement, HTML entities that appear in the input must either be removed or
+escaped. Of course, which approach is more appropriate depends on the situation.
+A filter that removes the HTML entities operates within the scope of the first
+definition of filter - an operator that produces a subset of the input. A filter
+that escapes the HTML entities, however, transforms the input (e.g., <code>&amp;</code> is
+transformed to <code>&amp;amp;</code>). Supporting such use cases for web developers is
+important, and “to filter”, in the context of using zend-filter, means to
+perform some transformations upon input data.</p>
+<h2 id="basic-usage-of-filters">Basic usage of filters</h2>
+<p>Having this filter definition established provides the foundation for
+<code>Zend\Filter\FilterInterface</code>, which requires a single method named <code>filter()</code>
+to be implemented by a filter class.</p>
+<p>Following is a basic example of using a filter upon two input data, the
+ampersand (<code>&amp;</code>) and double quote (<code>"</code>) characters:</p>
+<pre class="codehilite"><code class="language-php">$htmlEntities = new Zend\Filter\HtmlEntities();
+
+echo $htmlEntities-&gt;filter('&amp;'); // &amp;amp;
+echo $htmlEntities-&gt;filter('&quot;'); // &amp;quot;</code></pre>
+
+
+<p>Also, if a filter inherits from <code>Zend\Filter\AbstractFilter</code> (as do all of the
+out-of-the-box filters), you can also use them as invokables:</p>
+<pre class="codehilite"><code class="language-php">$strtolower = new Zend\Filter\StringToLower;
+
+echo $strtolower('I LOVE ZF2!'); // i love zf2!
+$zf2love = $strtolower('I LOVE ZF2!');</code></pre>
+
+
+<h2 id="using-the-staticfilter">Using the StaticFilter</h2>
+<p>If it is inconvenient to load a given filter class and create an instance of the
+filter, you can use <code>StaticFilter</code> with its <code>execute()</code> method as an alternative
+invocation style. The first argument of this method is a data input value, that
+you would pass to the <code>filter()</code> method. The second argument is a string, which
+corresponds to the basename of the filter class, relative to the <code>Zend\Filter</code>
+namespace. The <code>execute()</code> method automatically loads the class, creates an
+instance, and applies the <code>filter()</code> method to the data input.</p>
+<pre class="codehilite"><code class="language-php">echo StaticFilter::execute('&amp;', 'HtmlEntities');</code></pre>
+
+
+<p>You can also pass an array of constructor arguments, if they are needed for the
+filter class:</p>
+<pre class="codehilite"><code class="language-php">echo StaticFilter::execute(
+    '&quot;',
+    'HtmlEntities',
+    ['quotestyle' =&gt; ENT_QUOTES]
+);</code></pre>
+
+
+<p>The static usage can be convenient for invoking a filter ad hoc, but if you have
+the need to run a filter for multiple inputs, it’s more efficient to follow the
+first example above, creating an instance of the filter object and calling its
+<code>filter()</code> method.</p>
+<p>Also, the <code>FilterChain</code> class allows you to instantiate and run multiple filter
+and validator classes on demand to process sets of input data. See the
+<a href="../filter-chains/">FilterChain</a> chapter for more details.</p>
+<p>You can set and receive the <code>FilterPluginManager</code> for the <code>StaticFilter</code> to
+amend the standard filter classes.</p>
+<pre class="codehilite"><code class="language-php">$pluginManager = StaticFilter::getPluginManager()-&gt;setInvokableClass(
+    'myNewFilter',
+    'MyCustom\Filter\MyNewFilter'
+);
+
+StaticFilter::setPluginManager(new MyFilterPluginManager());</code></pre>
+
+
+<p>This is useful when adding custom filters to be used by the <code>StaticFilter</code>.</p>
+<h2 id="double-filtering">Double filtering</h2>
+<p>When using two filters in succession, you have to keep in mind that it is
+often not possible to get the original output by using the opposite filter. Take
+the following example:</p>
+<pre class="codehilite"><code class="language-php">$original = 'my_original_content';
+
+// Attach a filter
+$filter   = new Zend\Filter\Word\UnderscoreToCamelCase();
+$filtered = $filter-&gt;filter($original);
+
+// Use it's opposite
+$filter2  = new Zend\Filter\Word\CamelCaseToUnderscore();
+$filtered = $filter2-&gt;filter($filtered)</code></pre>
+
+
+<p>The above code example could lead to the impression that you will get the
+original output after the second filter has been applied. But thinking logically
+this is not the case. After applying the first filter, <code>my_original_content</code> will
+be changed to <code>MyOriginalContent</code>. But after applying the second filter, the result
+is <code>My_Original_Content</code>.</p>
+<p>As you can see it is not always possible to get the original output by using a
+filter which seems to be the opposite. It depends on the filter and also on the
+given input.</p>
+
+<hr />
+
+<nav>
+  <ul class="pager">
+    <li class="previous">
+      <a rel="prev" href=".."><i class="fa fa-arrow-left"></i> Previous</a>
+    </li>
+    <li class="next">
+      <a rel="next" href="../standard-filters/">Next <i class="fa fa-arrow-right"></i></a>
+    </li>
+  </ul>
+</nav></div>
+        
+    </div>
+    <!-- content:end -->
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Copyright (c) 2016 <a href="http://www.zend.com/">Zend Technologies USA Inc.</a><br></small>
+        </p>
+        <p><small><a href="http://framework.zend.com">Learn more about Zend Framework</a></small></p>
+    </footer>
+
+    <script src="../js/jquery-1.10.2.min.js"></script>
+    <script src="../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../js/prism-zf.js"></script>
+
+    <script>var base_url = '..';</script>
+    <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+    <script src="../js/base.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+</html>

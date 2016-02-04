@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="shortcut icon" href="../img/favicon.ico">
+
+    <title>File Filters - zend-filter</title>
+
+    <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic,700&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/zf.css" rel="stylesheet">
+    <link href="../css/prism-zf.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <span class="navbar-brand">
+              <a href="http://framework.zend.com"><img src="../img/zf-logo-mark.png" height="28" alt="Zend Framework" /></a>
+              <a href="..">zend-filter</a>
+            </span>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="..">Home</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../intro/">Intro</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../standard-filters/">Standard Filters</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../word/">Word Filters</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">File Filters</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../filter-chains/">Filter Chains</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../inflector/">String Inflection</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../static-filter/">Static Filter</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../writing-filters/">Writing Filters</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li >
+                        <a rel="prev" href="../word/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../filter-chains/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a href="https://github.com/zendframework/zend-filter">
+                            
+                                <i class="fa fa-github"></i>
+                            
+                            GitHub
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <!-- content:begin -->
+    <div class="container">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#file-filters">File Filters</a></li>
+        
+            <li><a href="#_files">$_FILES</a></li>
+        
+            <li><a href="#decrypt">Decrypt</a></li>
+        
+            <li><a href="#encrypt">Encrypt</a></li>
+        
+            <li><a href="#lowercase">Lowercase</a></li>
+        
+            <li><a href="#rename">Rename</a></li>
+        
+            <li><a href="#renameupload">RenameUpload</a></li>
+        
+            <li><a href="#uppercase">Uppercase</a></li>
+        
+    
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<ol class="breadcrumb" role="navigation" aria-label="breadcrumbs navigation">
+  <li><a href="..">Docs</a> &raquo;</li>
+  
+    
+      
+        <li>Reference &raquo;</li>
+      
+    
+  
+  <li class="active">File Filters</li>
+</ol>
+
+<nav class="hidden-lg">
+  <ul class="pager">
+    <li class="previous">
+      <a rel="prev" href="../word/"><i class="fa fa-arrow-left"></i> Previous</a>
+    </li>
+    <li class="next">
+      <a rel="next" href="../filter-chains/">Next <i class="fa fa-arrow-right"></i></a>
+    </li>
+  </ul>
+</nav>
+
+<h1 id="file-filters">File Filters</h1>
+<p>zend-filter also comes with a set of classes for filtering file contents, and
+performing file operations such as renaming.</p>
+<blockquote>
+<h2 id="_files">$_FILES</h2>
+<p>All file filter <code>filter()</code> implementations support either a file path string
+<em>or</em> a <code>$_FILES</code> array as the supplied argument. When a <code>$_FILES</code> array is
+passed in, the <code>tmp_name</code> is used for the file path.</p>
+</blockquote>
+<h2 id="decrypt">Decrypt</h2>
+<ul>
+<li>TODO</li>
+</ul>
+<h2 id="encrypt">Encrypt</h2>
+<ul>
+<li>TODO</li>
+</ul>
+<h2 id="lowercase">Lowercase</h2>
+<ul>
+<li>TODO</li>
+</ul>
+<h2 id="rename">Rename</h2>
+<p><code>Zend\Filter\File\Rename</code> can be used to rename a file and/or move a file to a new path.</p>
+<h3 id="supported-options">Supported Options</h3>
+<p>The following set of options are supported:</p>
+<ul>
+<li><code>target</code> (string; default: <code>*</code>): Target filename or directory; the new name
+  of the source file.</li>
+<li><code>source</code> (string; default: <code>*</code>): Source filename or directory which will be
+  renamed. Used to match the filtered file with an options set.</li>
+<li><code>overwrite</code> (boolean; default: <code>false</code>): Shall existing files be overwritten?
+  If the file is unable to be moved into the target path, a
+  <code>Zend\Filter\Exception\RuntimeException</code> will be thrown.</li>
+<li><code>randomize</code> (boolean; default: <code>false</code>): Shall target files have a random
+  postfix attached? The random postfix will generated with <code>uniqid('_')</code> after
+  the file name and before the extension. For example, <code>file.txt</code> might be
+  randomized to <code>file_4b3403665fea6.txt</code>.</li>
+</ul>
+<p>An array of option sets is also supported, where a single <code>Rename</code> filter
+instance can filter several files using different options. The options used for
+the filtered file will be matched from the <code>source</code> option in the options set.</p>
+<h3 id="usage-examples">Usage Examples</h3>
+<p>Move all filtered files to a different directory:</p>
+<pre class="codehilite"><code class="language-php">// 'target' option is assumed if param is a string
+$filter = new \Zend\Filter\File\Rename('/tmp/');
+echo $filter-&gt;filter('./myfile.txt');
+// File has been moved to '/tmp/myfile.txt'</code></pre>
+
+
+<p>Rename all filtered files to a new name:</p>
+<pre class="codehilite"><code class="language-php">$filter = new \Zend\Filter\File\Rename('/tmp/newfile.txt');
+echo $filter-&gt;filter('./myfile.txt');
+// File has been renamed to '/tmp/newfile.txt'</code></pre>
+
+
+<p>Move to a new path, and randomize file names:</p>
+<pre class="codehilite"><code class="language-php">$filter = new \Zend\Filter\File\Rename([
+    'target'    =&gt; '/tmp/newfile.txt',
+    'randomize' =&gt; true,
+]);
+echo $filter-&gt;filter('./myfile.txt');
+// File has been renamed to '/tmp/newfile_4b3403665fea6.txt'</code></pre>
+
+
+<p>Configure different options for several possible source files:</p>
+<pre class="codehilite"><code class="language-php">$filter = new \Zend\Filter\File\Rename([
+    [
+        'source'    =&gt; 'fileA.txt'
+        'target'    =&gt; '/dest1/newfileA.txt',
+        'overwrite' =&gt; true,
+    ],
+    [
+        'source'    =&gt; 'fileB.txt'
+        'target'    =&gt; '/dest2/newfileB.txt',
+        'randomize' =&gt; true,
+    ],
+]);
+echo $filter-&gt;filter('fileA.txt');
+// File has been renamed to '/dest1/newfileA.txt'
+echo $filter-&gt;filter('fileB.txt');
+// File has been renamed to '/dest2/newfileB_4b3403665fea6.txt'</code></pre>
+
+
+<h3 id="public-methods">Public Methods</h3>
+<p>The <code>Rename</code> filter defines the following public methods in addition to <code>filter()</code>:
+follows:</p>
+<ul>
+<li><code>getFile() : array</code>: Returns the files to rename along with their new name and location.</li>
+<li><code>setFile(string|array $options) : void</code>: Sets the file options for renaming.
+  Removes any previously set file options.</li>
+<li><code>addFile(string|array $options) : void</code>: Adds file options for renaming to
+  the current list of file options.</li>
+</ul>
+<h2 id="renameupload">RenameUpload</h2>
+<p><code>Zend\Filter\File\RenameUpload</code> can be used to rename or move an uploaded file to a new path.</p>
+<h3 id="supported-options_1">Supported Options</h3>
+<p>The following set of options are supported:</p>
+<ul>
+<li><code>target</code> (string; default: <code>*</code>): Target directory or full filename path.</li>
+<li><code>overwrite</code> (boolean; default: <code>false</code>): Shall existing files be overwritten?
+  If the file is unable to be moved into the target path, a
+  <code>Zend\Filter\Exception\RuntimeException</code> will be thrown.</li>
+<li><code>randomize</code> (boolean; default: <code>false</code>): Shall target files have a random
+  postfix attached? The random postfix will generated with <code>uniqid('_')</code> after
+  the file name and before the extension. For example, <code>file.txt</code> might be
+  randomized to <code>file_4b3403665fea6.txt</code>.</li>
+<li><code>use_upload_name</code> (boolean; default: <code>false</code>): When true, this filter will
+  use <code>$_FILES['name']</code> as the target filename. Otherwise, the default <code>target</code>
+  rules and the <code>$_FILES['tmp_name']</code> will be used.</li>
+<li><code>use_upload_extension</code> (boolean; default: <code>false</code>): When true, the uploaded
+  file will maintains its original extension if not specified.  For example, if
+  the uploaded file is <code>file.txt</code> and the target is <code>mynewfile</code>, the upload
+  will be renamed to <code>mynewfile.txt</code>.</li>
+</ul>
+<blockquote>
+<h4 id="using-the-upload-name-is-unsafe">Using the upload name is unsafe</h4>
+<p>Be <strong>very</strong> careful when using the <code>use_upload_name</code> option. For instance,
+extremely bad things could happen if you were to allow uploaded <code>.php</code> files
+(or other CGI files) to be moved into the <code>DocumentRoot</code>.</p>
+<p>It is generally a better idea to supply an internal filename to avoid
+security risks.</p>
+</blockquote>
+<p><code>RenameUpload</code> does not support an array of options like the<code>Rename</code> filter.
+When filtering HTML5 file uploads with the <code>multiple</code> attribute set, all files
+will be filtered with the same option settings.</p>
+<h3 id="usage-examples_1">Usage Examples</h3>
+<p>Move all filtered files to a different directory:</p>
+<pre class="codehilite"><code class="language-php">use Zend\Http\PhpEnvironment\Request;
+
+$request = new Request();
+$files   = $request-&gt;getFiles();
+// i.e. $files['my-upload']['tmp_name'] === '/tmp/php5Wx0aJ'
+// i.e. $files['my-upload']['name'] === 'myfile.txt'
+
+// 'target' option is assumed if param is a string
+$filter = new \Zend\Filter\File\RenameUpload('./data/uploads/');
+echo $filter-&gt;filter($files['my-upload']);
+// File has been moved to './data/uploads/php5Wx0aJ'
+
+// ... or retain the uploaded file name
+$filter-&gt;setUseUploadName(true);
+echo $filter-&gt;filter($files['my-upload']);
+// File has been moved to './data/uploads/myfile.txt'</code></pre>
+
+
+<p>Rename all filtered files to a new name:</p>
+<pre class="codehilite"><code class="language-php">use Zend\Http\PhpEnvironment\Request;
+
+$request = new Request();
+$files   = $request-&gt;getFiles();
+// i.e. $files['my-upload']['tmp_name'] === '/tmp/php5Wx0aJ'
+
+$filter = new \Zend\Filter\File\Rename('./data/uploads/newfile.txt');
+echo $filter-&gt;filter($files['my-upload']);
+// File has been renamed to './data/uploads/newfile.txt'</code></pre>
+
+
+<p>Move to a new path and randomize file names:</p>
+<pre class="codehilite"><code class="language-php">use Zend\Http\PhpEnvironment\Request;
+
+$request = new Request();
+$files   = $request-&gt;getFiles();
+// i.e. $files['my-upload']['tmp_name'] === '/tmp/php5Wx0aJ'
+
+$filter = new \Zend\Filter\File\Rename(array(
+    'target'    =&gt; './data/uploads/newfile.txt',
+    'randomize' =&gt; true,
+));
+echo $filter-&gt;filter($files['my-upload']);
+// File has been renamed to './data/uploads/newfile_4b3403665fea6.txt'</code></pre>
+
+
+<h2 id="uppercase">Uppercase</h2>
+<ul>
+<li>TODO</li>
+</ul>
+
+<hr />
+
+<nav>
+  <ul class="pager">
+    <li class="previous">
+      <a rel="prev" href="../word/"><i class="fa fa-arrow-left"></i> Previous</a>
+    </li>
+    <li class="next">
+      <a rel="next" href="../filter-chains/">Next <i class="fa fa-arrow-right"></i></a>
+    </li>
+  </ul>
+</nav></div>
+        
+    </div>
+    <!-- content:end -->
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Copyright (c) 2016 <a href="http://www.zend.com/">Zend Technologies USA Inc.</a><br></small>
+        </p>
+        <p><small><a href="http://framework.zend.com">Learn more about Zend Framework</a></small></p>
+    </footer>
+
+    <script src="../js/jquery-1.10.2.min.js"></script>
+    <script src="../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../js/prism-zf.js"></script>
+
+    <script>var base_url = '..';</script>
+    <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+    <script src="../js/base.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+</html>
