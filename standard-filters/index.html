@@ -476,7 +476,7 @@ setting the <code>casting</code> option to <code>FALSE</code>.</p>
 <p>In this case <code>Zend\Filter\Boolean</code> will work as described in the following
 table, which shows which values return <code>TRUE</code> or <code>FALSE</code>. All other given values
 are returned without change when <code>casting</code> is set to <code>FALSE</code></p>
-<table>
+<div class="table-responsive"><table>
 <thead>
 <tr>
 <th>Type</th>
@@ -531,7 +531,7 @@ are returned without change when <code>casting</code> is set to <code>FALSE</cod
 <td><code>"1"</code></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>The following example shows the behaviour when changing the <code>casting</code> option:</p>
 <pre class="codehilite"><code class="language-php">$filter = new Zend\Filter\Boolean([
     'type'    =&gt; Zend\Filter\Boolean::TYPE_ALL,
