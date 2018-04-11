@@ -1,39 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zend\Filter">  
     <link rel="shortcut icon" href="../img/favicon.ico">
 
     <title>File Filters - zend-filter</title>
 
-    <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
-    <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin" rel="stylesheet" type="text/css">
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin" rel="stylesheet" type="text/css">
-    <link href="//fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic,700&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-    <link href="../css/base.css" rel="stylesheet">
-    <link href="../css/zf-web.css" rel="stylesheet">
-    <link href="../css/zf.css" rel="stylesheet">
-    <link href="../css/prism-zf.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-        <![endif]-->
-
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
-    <script>
-    WebFont.load({
-        google: {
-            families: ['Open Sans', 'PT Sans']
-        }
-    });
-    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/styles-288837cc22.css">
 
     
 </head>
@@ -57,8 +37,8 @@
 
             <!-- Main title -->
             <span class="navbar-brand">
-              <a class="logo-link" href="http://framework.zend.com" data-toggle="tooltip" data-placement="bottom" title="Zend Framework"><img src="../img/zf-logo-mark.svg" height="28" alt="Zend Framework" /></a>
-              <a href="..">zend-filter</a>
+                <a class="logo-link" href="https://framework.zend.com/" data-toggle="tooltip" data-placement="bottom" title="Go to the ZF homepage"><img src="../img/zf-logo-mark.svg" height="28" alt="Zend Framework" /></a>
+                <a href="..">zend-filter</a>
             </span>
         </div>
 
@@ -69,9 +49,12 @@
                 <ul class="nav navbar-nav">
                 
                 
+                
                     <li >
-                        <a href="..">Home</a>
+                        <a href="..">zend-filter</a>
                     </li>
+                
+                
                 
                 
                 
@@ -81,54 +64,71 @@
                 
                 
                 
+                
+                
                     <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
+
 <li >
     <a href="../standard-filters/">Standard Filters</a>
 </li>
 
+
                         
                             
+
 <li >
     <a href="../word/">Word Filters</a>
 </li>
 
+
                         
                             
+
 <li class="active">
     <a href="./">File Filters</a>
 </li>
 
+
                         
                             
+
 <li >
     <a href="../filter-chains/">Filter Chains</a>
 </li>
 
+
                         
                             
+
 <li >
     <a href="../inflector/">String Inflection</a>
 </li>
 
+
                         
                             
+
 <li >
     <a href="../static-filter/">Static Filter</a>
 </li>
 
+
                         
                             
+
 <li >
     <a href="../writing-filters/">Writing Filters</a>
 </li>
 
+
                         
                         </ul>
                     </li>
+                
                 
                 
                 </ul>
@@ -148,7 +148,7 @@
                 </li>
                 
                     <li>
-                        <a href="https://github.com/zendframework/zend-filter">
+                        <a href="https://github.com/zendframework/zend-filter/">
                             
                                 <i class="fa fa-github"></i>
                             
@@ -171,9 +171,7 @@
         
             <li><a href="#_files">$_FILES</a></li>
         
-            <li><a href="#decrypt">Decrypt</a></li>
-        
-            <li><a href="#encrypt">Encrypt</a></li>
+            <li><a href="#encrypt-and-decrypt">Encrypt and Decrypt</a></li>
         
             <li><a href="#lowercase">Lowercase</a></li>
         
@@ -200,11 +198,11 @@
         <div class="col-md-9" role="main">
 
 <ol class="breadcrumb" role="navigation" aria-label="breadcrumbs navigation">
-  <li><a href="..">zend-filter</a> &raquo;</li>
+  <li><a href="..">zend-filter</a></li>
   
     
       
-        <li>Reference &raquo;</li>
+        <li>Reference</li>
       
     
   
@@ -220,21 +218,105 @@ performing file operations such as renaming.</p>
 <em>or</em> a <code>$_FILES</code> array as the supplied argument. When a <code>$_FILES</code> array is
 passed in, the <code>tmp_name</code> is used for the file path.</p>
 </blockquote>
-<h2 id="decrypt">Decrypt</h2>
-<ul>
-<li>TODO</li>
-</ul>
-<h2 id="encrypt">Encrypt</h2>
-<ul>
-<li>TODO</li>
-</ul>
+<h2 id="encrypt-and-decrypt">Encrypt and Decrypt</h2>
+<p>These filters allow encrypting and decrypting file contents, and are derived
+from the <code>Zend\Filter\Encrypt</code> and <code>Zend\Filter\Decrypt</code> filters. Only file reading and
+writing operations are performed by the filer; encryption and decryption operations
+are performed by the parent classes.</p>
+<p>Usage:</p>
+<pre class="codehilite"><code class="language-php">use Zend\Filter\File\Encrypt as EncryptFileFilter;
+use Zend\Http\PhpEnvironment\Request;
+
+$request = new Request();
+$files   = $request-&gt;getFiles();
+// i.e. $files['my-upload']['tmp_name'] === '/tmp/php5Wx0aJ'
+
+$filter = new EncryptFileFilter([
+    'adapter' =&gt; 'BlockCipher',
+    'key' =&gt; '--our-super-secret-key--',
+]);
+$filter-&gt;filter($files['my-upload']);</code></pre>
+
+<p>In the above example, we pass options to our constructor in order to configure
+the filter. We could instead use use setter methods to inject these options:</p>
+<pre class="codehilite"><code class="language-php">use Zend\Filter\File\Encrypt as EncryptFileFilter;
+use Zend\Http\PhpEnvironment\Request;
+
+$request = new Request();
+$files   = $request-&gt;getFiles();
+// i.e. $files['my-upload']['tmp_name'] === '/tmp/php5Wx0aJ'
+
+$filter = new EncryptFileFilter();
+$filter-&gt;setAdapter('BlockCipher');
+$filter-&gt;setKey('--our-super-secret-key--');
+$filter-&gt;filter($files['my-upload']);</code></pre>
+
+<p>Check the <a href="../zend-filter/standard-filters/#encrypt-and-decrypt">Encrypt and Decrypt filter documentation</a>
+for more information about options and adapters.</p>
 <h2 id="lowercase">Lowercase</h2>
+<p><code>Zend\Filter\File\Lowercase</code> can be used to convert all file contents to
+lowercase.</p>
+<h3 id="supported-options">Supported Options</h3>
+<p>The following set of options are supported:</p>
 <ul>
-<li>TODO</li>
+<li><code>encoding</code>: Set the encoding to use during conversion.</li>
 </ul>
+<h3 id="basic-usage">Basic Usage</h3>
+<pre class="codehilite"><code class="language-php">use Zend\Filter\File\LowerCase;
+use Zend\Http\PhpEnvironment\Request;
+
+$request = new Request();
+$files   = $request-&gt;getFiles();
+// i.e. $files['my-upload']['tmp_name'] === '/tmp/php5Wx0aJ'
+
+$filter = new LowerCase();
+$filter-&gt;filter($files['my-upload']);</code></pre>
+
+<p>This example converts the contents of an uploaded file to lowercase.  After this
+process, you can use the <a href="#rename">Rename</a> or <a href="#renameupload">RenameUpload</a>
+filter to replace this file with your original file, or read directly from file.
+But, don't forget, if you upload a file and send your <code>$_FILES</code> array to a
+filter method, the <code>LowerCase</code> filter will only change the temporary file
+(<code>tmp_name</code> index of array), not the original file. Let's check following
+example:</p>
+<pre class="codehilite"><code class="language-php">use Zend\Filter\File\LowerCase;
+use Zend\Filter\File\Rename;
+use Zend\Http\PhpEnvironment\Request;
+
+$request = new Request();
+$files   = $request-&gt;getFiles();
+// i.e. $files['my-upload']['tmp_name'] === '/tmp/php5Wx0aJ'
+
+$lowercaseFilter = new LowerCase();
+$file = $lowercaseFilter-&gt;filter($files['userfile']);
+$renameFilter = new Rename([
+    'target'    =&gt; '/tmp/newfile.txt',
+    'randomize' =&gt; true,
+]);
+$filename = $renameFilter-&gt;filter($file['tmp_name']);</code></pre>
+
+<p>With this example, the final, stored file on the server will have the lowercased
+content.</p>
+<p>If you want to use a specific encoding when converting file content, you should
+specify the encoding when instantiating the <code>LowerCase</code> filter, or use the
+<code>setEncoding</code> method to change it.</p>
+<pre class="codehilite"><code>use Zend\Filter\File\LowerCase;
+use Zend\Http\PhpEnvironment\Request;
+
+$request = new Request();
+$files   = $request-&gt;getFiles();
+// i.e. $files['my-upload']['tmp_name'] === '/tmp/php5Wx0aJ'
+
+$filter = new LowerCase();
+$filter-&gt;setEncoding('ISO-8859-1');
+$filter-&gt;filter($files['my-upload']);</code></pre>
+
+<p>The <code>LowerCase</code> filter extends from the <code>StringToLower</code> filter; read the
+<a href="../zend-filter/standard-filters/#stringtolower"><code>StringToLower</code> documentation</a>
+for more information about encoding and its exceptions.</p>
 <h2 id="rename">Rename</h2>
 <p><code>Zend\Filter\File\Rename</code> can be used to rename a file and/or move a file to a new path.</p>
-<h3 id="supported-options">Supported Options</h3>
+<h3 id="supported-options_1">Supported Options</h3>
 <p>The following set of options are supported:</p>
 <ul>
 <li><code>target</code> (string; default: <code>*</code>): Target filename or directory; the new name
@@ -259,12 +341,10 @@ $filter = new \Zend\Filter\File\Rename('/tmp/');
 echo $filter-&gt;filter('./myfile.txt');
 // File has been moved to '/tmp/myfile.txt'</code></pre>
 
-
 <p>Rename all filtered files to a new name:</p>
 <pre class="codehilite"><code class="language-php">$filter = new \Zend\Filter\File\Rename('/tmp/newfile.txt');
 echo $filter-&gt;filter('./myfile.txt');
 // File has been renamed to '/tmp/newfile.txt'</code></pre>
-
 
 <p>Move to a new path, and randomize file names:</p>
 <pre class="codehilite"><code class="language-php">$filter = new \Zend\Filter\File\Rename([
@@ -273,7 +353,6 @@ echo $filter-&gt;filter('./myfile.txt');
 ]);
 echo $filter-&gt;filter('./myfile.txt');
 // File has been renamed to '/tmp/newfile_4b3403665fea6.txt'</code></pre>
-
 
 <p>Configure different options for several possible source files:</p>
 <pre class="codehilite"><code class="language-php">$filter = new \Zend\Filter\File\Rename([
@@ -293,7 +372,6 @@ echo $filter-&gt;filter('fileA.txt');
 echo $filter-&gt;filter('fileB.txt');
 // File has been renamed to '/dest2/newfileB_4b3403665fea6.txt'</code></pre>
 
-
 <h3 id="public-methods">Public Methods</h3>
 <p>The <code>Rename</code> filter defines the following public methods in addition to <code>filter()</code>:
 follows:</p>
@@ -306,7 +384,7 @@ follows:</p>
 </ul>
 <h2 id="renameupload">RenameUpload</h2>
 <p><code>Zend\Filter\File\RenameUpload</code> can be used to rename or move an uploaded file to a new path.</p>
-<h3 id="supported-options_1">Supported Options</h3>
+<h3 id="supported-options_2">Supported Options</h3>
 <p>The following set of options are supported:</p>
 <ul>
 <li><code>target</code> (string; default: <code>*</code>): Target directory or full filename path.</li>
@@ -355,7 +433,6 @@ $filter-&gt;setUseUploadName(true);
 echo $filter-&gt;filter($files['my-upload']);
 // File has been moved to './data/uploads/myfile.txt'</code></pre>
 
-
 <p>Rename all filtered files to a new name:</p>
 <pre class="codehilite"><code class="language-php">use Zend\Http\PhpEnvironment\Request;
 
@@ -366,7 +443,6 @@ $files   = $request-&gt;getFiles();
 $filter = new \Zend\Filter\File\Rename('./data/uploads/newfile.txt');
 echo $filter-&gt;filter($files['my-upload']);
 // File has been renamed to './data/uploads/newfile.txt'</code></pre>
-
 
 <p>Move to a new path and randomize file names:</p>
 <pre class="codehilite"><code class="language-php">use Zend\Http\PhpEnvironment\Request;
@@ -382,11 +458,27 @@ $filter = new \Zend\Filter\File\Rename(array(
 echo $filter-&gt;filter($files['my-upload']);
 // File has been renamed to './data/uploads/newfile_4b3403665fea6.txt'</code></pre>
 
-
 <h2 id="uppercase">Uppercase</h2>
+<p><code>Zend\Filter\File\Uppercase</code> can be used to convert all file contents to
+uppercase.</p>
+<h3 id="supported-options_3">Supported Options</h3>
+<p>The following set of options are supported:</p>
 <ul>
-<li>TODO</li>
+<li><code>encoding</code>: Set the encoding to use during conversion.</li>
 </ul>
+<h3 id="basic-usage_1">Basic Usage</h3>
+<pre class="codehilite"><code class="language-php">use Zend\Filter\File\UpperCase;
+use Zend\Http\PhpEnvironment\Request;
+
+$request = new Request();
+$files   = $request-&gt;getFiles();
+// i.e. $files['my-upload']['tmp_name'] === '/tmp/php5Wx0aJ'
+
+$filter = new UpperCase();
+$filter-&gt;filter($files['my-upload']);</code></pre>
+
+<p>See the documentation on the <a href="#lowercase"><code>LowerCase</code></a> filter, above, for more
+information.</p>
 
 <hr />
 
@@ -412,7 +504,7 @@ echo $filter-&gt;filter($files['my-upload']);
             <div class="col-lg-3">
               <p>
                 <strong>Zend Framework</strong><br />
-                <a href="http://framework.zend.com/">framework.zend.com</a><br />
+                <a href="https://framework.zend.com/">framework.zend.com</a><br />
                 <a href="https://docs.zendframework.com">docs.zendframework.com</a><br />
                 <a href="https://packages.zendframework.com">packages.zendframework.com</a><br />
                 <a href="https://apigility.org">apigility.org</a><br />
@@ -433,14 +525,15 @@ echo $filter-&gt;filter($files['my-upload']);
                 <h4>Copyright</h4>
                 <div class="hline-w"></div>
 
-                <p>&copy; 2006-2016 by <a href="http://www.zend.com">Zend</a>, a <a href="http://www.roguewave.com/">Rogue Wave Company</a>.</p>
+                <p>&copy; 2006-2017 by <a href="https://www.zend.com/">Zend</a>, a <a href="https://www.roguewave.com/">Rogue Wave Company</a>.</p>
             </div>
 
             <div class="col-lg-4">
                 <h4>Contacts</h4>
                 <div class="hline-w"></div>
                 <p>
-                    <a href="irc://irc.freenode.net/zftalk" class="btn-social btn-outline" alt="IRC" title="IRC"><i class="fa fa-comment"></i></a>
+                    <a href="https://discourse.zendframework.com" class="btn-social btn-outline" alt="Forum" title="Forum"><i class="fa fa-comments"></i></a>
+                    <a href="https://zendframework-slack.herokuapp.com" class="btn-social btn-outline" alt="Slack" title="Slack"><i class="fa fa-slack"></i></a>
                     <a href="https://github.com/zendframework" class="btn-social btn-outline" alt="Github" title="Github"><i class="fa fa-github"></i></a>
                     <a href="https://twitter.com/zfdevteam" class="btn-social btn-outline" alt="Twitter" title="Twitter"><i class="fa fa-twitter"></i></a>
                 </p>
@@ -449,14 +542,13 @@ echo $filter-&gt;filter($files['my-upload']);
     </div>
 </div>
 
-
-    <script src="../js/jquery-1.10.2.min.js"></script>
-    <script src="../js/bootstrap-3.0.3.min.js"></script>
-    <script src="../js/prism-zf.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
     <script>var base_url = '..';</script>
+    <script src="../js/scripts-0b6185f4a5.js"></script>
     <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
-    <script src="../js/base.js"></script>
+        <script src="../search/require.js"></script>
+        <script src="../search/search.js"></script>
 
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
         <div class="modal-dialog">
@@ -488,7 +580,7 @@ echo $filter-&gt;filter($files['my-upload']);
     <div class="zf-components">
   <div class="zf-components-grid">
     <div class="zf-logo">
-      <a href="http://framework.zend.com" data-toggle="tooltip" data-placement="bottom" title="Go to the ZF homepage"><img src="../img/zf-logo-mark.svg" alt="Zend Framework" width="250" /></a>
+      <a href="https://framework.zend.com" data-toggle="tooltip" data-placement="bottom" title="Go to the ZF homepage"><img src="../img/zf-logo-mark.svg" alt="Zend Framework" width="250" /></a>
     </div>
 
     <div class="component-list"></div>
@@ -497,112 +589,7 @@ echo $filter-&gt;filter($files['my-upload']);
   </div>
 </div>
 
-    <script>
-  // Prepare the component list dropdown for display
-  $(function () {
-    var components = $(".zf-components"),
-        componentList = components.find(".component-list"),
-        sidebar = $(".bs-sidebar.affix"),
-        sidebarInitialPos = sidebar.css("position"),
-        hidden,
-        componentToggle = $(".component-toggle"),
-        navbar = $(".navbar-fixed-top"),
-        rollUpLink = $(".zf-components-rollup a");
+</body>
 
-    // Initial setup on document load
-    components.insertBefore(navbar);
-    $(".zf-logo a").tooltip();
-    componentToggle.tooltip();
-    rollUpLink.attr({ href: "#", alt: "Hide component list" });
-
-    // Cast initial sidebar position value
-    if (undefined === sidebarInitialPos) {
-      sidebarInitialPos = "fixed";
-    }
-
-    // Setup onclick events to toggle list
-    componentToggle.click(toggleComponentList);
-    rollUpLink.click(toggleComponentList);
-
-    // Toggle the component list display
-    function toggleComponentList(event) {
-      event.preventDefault();
-
-      if (hidden === undefined) {
-        // Not loaded yet; load and display.
-        loadComponentList();
-        return;
-      }
-
-      if (hidden) {
-        // Hidden; display.
-        showComponentList();
-        return;
-      }
-
-      // Currently visible; hide
-      hideComponentList();
-    }
-
-    // Show the component list
-    function showComponentList() {
-      navbar.css({position: "relative"});
-      sidebar.css({position: "relative"});
-      components
-        .css({"margin-top": "-" + components.outerHeight() + "px"})
-        .show()
-        .animate({"margin-top": 0}, {
-          complete: function () {
-            componentToggle
-              .data("placement", "top")
-              .attr("data-original-title", "Hide component list");
-            hidden = false;
-          },
-          queue: false
-        });
-    }
-
-    // Hide the component list
-    function hideComponentList() {
-      components.animate({"margin-top": "-" + components.outerHeight() + "px"}, {
-        complete: function () {
-          navbar.css({position: "fixed"});
-          sidebar.css({position: sidebarInitialPos});
-          componentToggle
-            .data("placement", "bottom")
-            .attr("data-original-title", "Show component list");
-          components.hide();
-          hidden = true;
-        },
-        queue: false
-      });
-      sidebar.animate({ top: sidebarInitialTop + "px" }, { queue: false});
-    }
-
-    // Inject a component into the componet list DOM.
-    function injectComponent(index, component) {
-      componentList.append('<div class="component"><h4><a href="' + component.url + '">' + component.name + '</a></h4><p>' + component.description + '</p></div>');
-    }
-
-    // Parse the component list, build the DOM, and display it.
-    function parseComponentList(components) {
-      $.each(components, injectComponent);
-      showComponentList();
-    }
-
-    // Fetch the component list and display it.
-    function loadComponentList () {
-      $.ajax({
-        url: "//docs.zendframework.com/zf-mkdoc-theme/scripts/zf-component-list.json",
-        dataType: "text json",
-        success: parseComponentList,
-        error: function (e) {
-          console.log("Error occurred with XHR call", e);
-        }
-      });
-    }
-  });
-</script>
-    </body>
 
 </html>
