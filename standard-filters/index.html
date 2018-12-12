@@ -269,6 +269,10 @@
                     </li>
                 
                     <li class="toc__entry">
+                        <a href="#tofloat" class="toc__link">ToFloat</a>
+                    </li>
+                
+                    <li class="toc__entry">
                         <a href="#toint" class="toc__link">ToInt</a>
                     </li>
                 
@@ -1359,11 +1363,24 @@ boolean parameter, <code>$doubleQuote</code>.</p>
 $filter-&gt;setQuoteStyle(ENT_QUOTES);
 print $filter-&gt;getQuoteStyle(ENT_QUOTES);</code></pre>
 
+<h2 id="tofloat">ToFloat</h2>
+<ul>
+<li>Since 2.9.0</li>
+</ul>
+<p><code>Zend\Filter\ToFloat</code> allows you to transform a scalar value into a float.</p>
+<h3 id="supported-options_11">Supported Options</h3>
+<p>There are no additional options for <code>Zend\Filter\ToFloat</code>.</p>
+<h3 id="basic-usage_8">Basic Usage</h3>
+<pre class="codehilite"><code class="language-php">$filter = new Zend\Filter\ToFloat();
+
+print $filter-&gt;filter('-4.4');</code></pre>
+
+<p>This will return <code>-4.4</code> (as a float).</p>
 <h2 id="toint">ToInt</h2>
 <p><code>Zend\Filter\ToInt</code> allows you to transform a scalar value into an integer.</p>
-<h3 id="supported-options_11">Supported Options</h3>
+<h3 id="supported-options_12">Supported Options</h3>
 <p>There are no additional options for <code>Zend\Filter\ToInt</code>.</p>
-<h3 id="basic-usage_8">Basic Usage</h3>
+<h3 id="basic-usage_9">Basic Usage</h3>
 <pre class="codehilite"><code class="language-php">$filter = new Zend\Filter\ToInt();
 
 print $filter-&gt;filter('-4 is less than 0');</code></pre>
@@ -1380,7 +1397,7 @@ instead starting in 2.4.0.</p>
 <p>This filter will change the given input to be <code>NULL</code> if it meets specific
 criteria. This is often necessary when you work with databases and want to have
 a <code>NULL</code> value instead of a boolean or any other type.</p>
-<h3 id="supported-options_12">Supported Options</h3>
+<h3 id="supported-options_13">Supported Options</h3>
 <p>The following options are supported for <code>Zend\Filter\ToNull</code>:</p>
 <ul>
 <li><code>type</code>: The variable type which should be supported.</li>
@@ -1448,7 +1465,7 @@ extends the <code>NumberParse</code> filter, which acts as wrapper for the <code
 Internationalization extension (Intl).</p>
 <p>This filter is part of the zend-i18n package; you will need to include that
 package in your application to use it.</p>
-<h3 id="supported-options_13">Supported Options</h3>
+<h3 id="supported-options_14">Supported Options</h3>
 <p>The following options are supported for <code>NumberFormat</code>:</p>
 <pre class="codehilite"><code class="language-php">NumberFormat([ string $locale [, int $style [, int $type ]]])</code></pre>
 
@@ -1473,7 +1490,7 @@ package in your application to use it.</p>
   <code>getType()</code> and <code>setType()</code>.</p>
 </li>
 </ul>
-<h3 id="basic-usage_9">Basic Usage</h3>
+<h3 id="basic-usage_10">Basic Usage</h3>
 <pre class="codehilite"><code class="language-php">$filter = new \Zend\I18n\Filter\NumberFormat('de_DE');
 echo $filter-&gt;filter(1234567.8912346);
 // Returns '1.234.567,891'
@@ -1492,7 +1509,7 @@ a wrapper for the <code>NumberFormatter</code> class within the Internationaliza
 extension (Intl).</p>
 <p>This filter is part of the zend-i18n package; you will need to include that
 package in your application to use it.</p>
-<h3 id="supported-options_14">Supported Options</h3>
+<h3 id="supported-options_15">Supported Options</h3>
 <p>The following options are supported for <code>NumberParse</code>:</p>
 <pre class="codehilite"><code class="language-php">NumberParse([ string $locale [, int $style [, int $type ]]])</code></pre>
 
@@ -1517,7 +1534,7 @@ package in your application to use it.</p>
   <code>getType()</code> and <code>setType()</code>.</p>
 </li>
 </ul>
-<h3 id="basic-usage_10">Basic Usage</h3>
+<h3 id="basic-usage_11">Basic Usage</h3>
 <pre class="codehilite"><code class="language-php">$filter = new \Zend\I18n\Filter\NumberParse('de_DE');
 echo $filter-&gt;filter('1.234.567,891');
 // Returns 1234567.8912346
@@ -1533,14 +1550,14 @@ echo $filter-&gt;filter('1,23456789E-3');
 <h2 id="pregreplace">PregReplace</h2>
 <p><code>Zend\Filter\PregReplace</code> performs a search using regular expressions and replaces all found
 elements.</p>
-<h3 id="supported-options_15">Supported Options</h3>
+<h3 id="supported-options_16">Supported Options</h3>
 <p>The following options are supported for <code>Zend\Filter\PregReplace</code>:</p>
 <ul>
 <li><code>pattern</code>: The pattern to search for.</li>
 <li><code>replacement</code>: The string which to use as a replacement for the matches; this
   can optionally contain placeholders for matched groups in the search pattern.</li>
 </ul>
-<h3 id="basic-usage_11">Basic Usage</h3>
+<h3 id="basic-usage_12">Basic Usage</h3>
 <p>To use this filter properly, you must give both options listed above.</p>
 <p>The <code>pattern</code> option has to be given to set the pattern to search for. It can be
 a string for a single pattern, or an array of strings for multiple patterns.</p>
@@ -1572,13 +1589,13 @@ $filter-&gt;filter($input);
 <h2 id="realpath">RealPath</h2>
 <p>This filter will resolve given links and pathnames, and returns the canonicalized
 absolute pathnames.</p>
-<h3 id="supported-options_16">Supported Options</h3>
+<h3 id="supported-options_17">Supported Options</h3>
 <p>The following options are supported for <code>Zend\Filter\RealPath</code>:</p>
 <ul>
 <li><code>exists</code>: This option defaults to <code>TRUE</code>, which validates that the given path
   really exists.</li>
 </ul>
-<h3 id="basic-usage_12">Basic Usage</h3>
+<h3 id="basic-usage_13">Basic Usage</h3>
 <p>For any given link or pathname, its absolute path will be returned. References
 to <code>/./</code>, <code>/../</code> and extra <code>/</code> sequences in the input path will be stripped. The
 resulting path will not have any symbolic links, <code>/./</code>, or <code>/../</code> sequences.</p>
@@ -1607,12 +1624,12 @@ $filtered = $filter-&gt;filter($path);
 <li>Since 2.9.0</li>
 </ul>
 <p>This filter will add the provided prefix to scalar values.</p>
-<h3 id="supported-options_17">Supported Options</h3>
+<h3 id="supported-options_18">Supported Options</h3>
 <p>The following options are supported for <code>Zend\Filter\StringPrefix</code>:</p>
 <ul>
 <li><code>prefix</code>: The string prefix to add to values.</li>
 </ul>
-<h3 id="basic-usage_13">Basic Usage</h3>
+<h3 id="basic-usage_14">Basic Usage</h3>
 <pre class="codehilite"><code class="language-php">$filter = new Zend\Filter\StringPrefix([
     'prefix' =&gt; 'PHP-',
 ]);
@@ -1625,12 +1642,12 @@ echo $filter-&gt;filter('MidCentral');</code></pre>
 <li>Since 2.9.0</li>
 </ul>
 <p>This filter will add the provided suffix to scalar values.</p>
-<h3 id="supported-options_18">Supported Options</h3>
+<h3 id="supported-options_19">Supported Options</h3>
 <p>The following options are supported for <code>Zend\Filter\StringSuffix</code>:</p>
 <ul>
 <li><code>suffix</code>: The string suffix to append to values.</li>
 </ul>
-<h3 id="basic-usage_14">Basic Usage</h3>
+<h3 id="basic-usage_15">Basic Usage</h3>
 <pre class="codehilite"><code class="language-php">$filter = new Zend\Filter\StringSuffix([
     'suffix' =&gt; '-PHP',
 ]);
@@ -1640,12 +1657,12 @@ echo $filter-&gt;filter('MidCentral');</code></pre>
 <p>The above results in the string <code>MidCentral-PHP</code>.</p>
 <h2 id="stringtolower">StringToLower</h2>
 <p>This filter converts any input to lowercase.</p>
-<h3 id="supported-options_19">Supported Options</h3>
+<h3 id="supported-options_20">Supported Options</h3>
 <p>The following options are supported for <code>Zend\Filter\StringToLower</code>:</p>
 <ul>
 <li><code>encoding</code>: This option can be used to set an encoding to use.</li>
 </ul>
-<h3 id="basic-usage_15">Basic Usage</h3>
+<h3 id="basic-usage_16">Basic Usage</h3>
 <pre class="codehilite"><code class="language-php">$filter = new Zend\Filter\StringToLower();
 
 print $filter-&gt;filter('SAMPLE');
@@ -1676,12 +1693,12 @@ $filter-&gt;setEncoding('ISO-8859-1');</code></pre>
 </blockquote>
 <h2 id="stringtoupper">StringToUpper</h2>
 <p>This filter converts any input to UPPERCASE.</p>
-<h3 id="supported-options_20">Supported Options</h3>
+<h3 id="supported-options_21">Supported Options</h3>
 <p>The following options are supported for <code>Zend\Filter\StringToUpper</code>:</p>
 <ul>
 <li><code>encoding</code>: This option can be used to set the encoding to use.</li>
 </ul>
-<h3 id="basic-usage_16">Basic Usage</h3>
+<h3 id="basic-usage_17">Basic Usage</h3>
 <pre class="codehilite"><code class="language-php">$filter = new Zend\Filter\StringToUpper();
 
 print $filter-&gt;filter('Sample');
@@ -1699,14 +1716,14 @@ $filter-&gt;setEncoding('ISO-8859-1');</code></pre>
 <h2 id="stringtrim">StringTrim</h2>
 <p>This filter modifies a given string such that certain characters are removed
 from the beginning and end.</p>
-<h3 id="supported-options_21">Supported Options</h3>
+<h3 id="supported-options_22">Supported Options</h3>
 <p>The following options are supported for <code>Zend\Filter\StringTrim</code>:</p>
 <ul>
 <li><code>charlist</code>: List of characters to remove from the beginning and end of the
   string. If this is not set or is null, the default behavior will be invoked,
   which is to remove only whitespace from the beginning and end of the string.</li>
 </ul>
-<h3 id="basic-usage_17">Basic Usage</h3>
+<h3 id="basic-usage_18">Basic Usage</h3>
 <pre class="codehilite"><code class="language-php">$filter = new Zend\Filter\StringTrim();
 
 print $filter-&gt;filter(' This is (my) content: ');</code></pre>
@@ -1727,9 +1744,9 @@ current character list.</p>
 <h2 id="stripnewlines">StripNewlines</h2>
 <p>This filter modifies a given string and removes all new line characters within
 that string.</p>
-<h3 id="supported-options_22">Supported Options</h3>
+<h3 id="supported-options_23">Supported Options</h3>
 <p>There are no additional options for <code>Zend\Filter\StripNewlines</code>:</p>
-<h3 id="basic-usage_18">Basic Usage</h3>
+<h3 id="basic-usage_19">Basic Usage</h3>
 <pre class="codehilite"><code class="language-php">$filter = new Zend\Filter\StripNewlines();
 
 print $filter-&gt;filter(' This is (my)``\n\r``content: ');</code></pre>
@@ -1747,7 +1764,7 @@ including potential XSS vectors.</p>
 <p>For a fully secure solution that allows selected filtering of HTML tags, use
 either Tidy or HtmlPurifier.</p>
 </blockquote>
-<h3 id="supported-options_23">Supported Options</h3>
+<h3 id="supported-options_24">Supported Options</h3>
 <p>The following options are supported for <code>Zend\Filter\StripTags</code>:</p>
 <ul>
 <li><code>allowAttribs</code>: This option sets the attributes which are accepted. All other
@@ -1755,7 +1772,7 @@ either Tidy or HtmlPurifier.</p>
 <li><code>allowTags</code>: This option sets the tags which are accepted. All other tags will
   be stripped from; the given content.</li>
 </ul>
-<h3 id="basic-usage_19">Basic Usage</h3>
+<h3 id="basic-usage_20">Basic Usage</h3>
 <pre class="codehilite"><code class="language-php">$filter = new Zend\Filter\StripTags();
 
 print $filter-&gt;filter('&lt;B&gt;My content&lt;/B&gt;');</code></pre>
@@ -1821,14 +1838,14 @@ width='100'&gt;picture&lt;/img&gt; click &lt;a href='&lt;http://picture.com/zend
 as the result.</p>
 <h2 id="urinormalize">UriNormalize</h2>
 <p>This filter sets the scheme on a URI if the scheme is missing.</p>
-<h3 id="supported-options_24">Supported Options</h3>
+<h3 id="supported-options_25">Supported Options</h3>
 <p>The following options are supported for <code>Zend\Filter\UriNormalize</code>:</p>
 <ul>
 <li><code>defaultScheme</code>: This option can be used to set the default scheme to use when
   parsing scheme-less URIs.</li>
 <li><code>enforcedScheme</code>: Set a URI scheme to enforce on schemeless URIs.</li>
 </ul>
-<h3 id="basic-usage_20">Basic Usage</h3>
+<h3 id="basic-usage_21">Basic Usage</h3>
 <pre class="codehilite"><code class="language-php">$filter = new Zend\Filter\UriNormalize(array(
     'enforcedScheme' =&gt; 'https'
 ));
@@ -1841,13 +1858,13 @@ echo $filter-&gt;filter('www.example.com');</code></pre>
 filter's allowed list of values. If the value is present, it will return that
 value.</p>
 <p>For the opposite functionality see the <a href="#blacklist">Blacklist</a> filter.</p>
-<h3 id="supported-options_25">Supported Options</h3>
+<h3 id="supported-options_26">Supported Options</h3>
 <p>The following options are supported for <code>Zend\Filter\Whitelist</code>:</p>
 <ul>
 <li><code>strict</code>: Uses strict mode for comparisons; passed to <code>in_array()</code>'s third argument.</li>
 <li><code>list</code>: An array of allowed values.</li>
 </ul>
-<h3 id="basic-usage_21">Basic Usage</h3>
+<h3 id="basic-usage_22">Basic Usage</h3>
 <pre class="codehilite"><code class="language-php">$whitelist = new \Zend\Filter\Whitelist([
     'list' =&gt; ['allowed-1', 'allowed-2']
 ]);
