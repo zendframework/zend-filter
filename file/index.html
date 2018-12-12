@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Zend\Filter">  
+    <meta name="description" content="Programmatically filter and normalize data and files.">  
     <link rel="shortcut icon" href="../img/favicon.ico">
 
     <title>File Filters - zend-filter</title>
@@ -75,13 +75,7 @@
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href=".." class="subnavigation__link">zend-filter</a>
-                    </li>
-                
-            
-                
-                    <li class="subnavigation__list-item ">
-                        <a href="../intro/" class="subnavigation__link">Intro</a>
+                        <a href="../intro/" class="subnavigation__link">Introduction</a>
                     </li>
                 
             
@@ -446,6 +440,14 @@ follows:</p>
   file will maintains its original extension if not specified.  For example, if
   the uploaded file is <code>file.txt</code> and the target is <code>mynewfile</code>, the upload
   will be renamed to <code>mynewfile.txt</code>.</li>
+<li><code>stream_factory</code> (<code>Psr\Http\Message\StreamFactoryInterface</code>; default: <code>null</code>):
+  Required when passing a <a href="https://www.php-fig.org/psr/psr-7/#36-psrhttpmessageuploadedfileinterface">PSR-7 UploadedFileInterface</a>
+  to the filter; used to create a new stream representing the renamed file.
+  (Since 2.9.0)</li>
+<li><code>upload_file_factory</code> (<code>Psr\Http\Message\UploadedFileFactoryInterface</code>; default:
+  <code>null</code>): Required when passing a <a href="https://www.php-fig.org/psr/psr-7/#36-psrhttpmessageuploadedfileinterface">PSR-7 UploadedFileInterface</a>
+  to the filter; used to create a new uploaded file representation of the
+  renamed file.  (Since 2.9.0)</li>
 </ul>
 <blockquote>
 <h4 id="using-the-upload-name-is-unsafe">Using the upload name is unsafe</h4>
@@ -484,7 +486,7 @@ $request = new Request();
 $files   = $request-&gt;getFiles();
 // i.e. $files['my-upload']['tmp_name'] === '/tmp/php5Wx0aJ'
 
-$filter = new \Zend\Filter\File\Rename('./data/uploads/newfile.txt');
+$filter = new \Zend\Filter\File\RenameUpload('./data/uploads/newfile.txt');
 echo $filter-&gt;filter($files['my-upload']);
 // File has been renamed to './data/uploads/newfile.txt'</code></pre>
 
@@ -495,13 +497,51 @@ $request = new Request();
 $files   = $request-&gt;getFiles();
 // i.e. $files['my-upload']['tmp_name'] === '/tmp/php5Wx0aJ'
 
-$filter = new \Zend\Filter\File\Rename(array(
+$filter = new \Zend\Filter\File\RenameUpload([
     'target'    =&gt; './data/uploads/newfile.txt',
     'randomize' =&gt; true,
-));
+]);
 echo $filter-&gt;filter($files['my-upload']);
 // File has been renamed to './data/uploads/newfile_4b3403665fea6.txt'</code></pre>
 
+<p>Handle a PSR-7 uploaded file:</p>
+<pre class="codehilite"><code class="language-php">use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\StreamFactoryInterface;
+use Psr\Http\Message\UploadedFileFactoryInterface;
+use Psr\Http\Message\UploadedFileInterface;
+use Zend\Filter\File\RenameUpload;
+
+$filter = new \Zend\Filter\File\RenameUpload([
+    'target'              =&gt; './data/uploads/',
+    'randomize'           =&gt; true,
+    // @var StreamFactoryInterface $streamFactory
+    'stream_factory'      =&gt; $streamFactory,
+    // @var UploadedFileFactoryInterface $uploadedFileFactory
+    'upload_file_factory' =&gt; $uploadedFileFactory,
+]);
+
+// @var ServerRequestInterface $request
+foreach ($request-&gt;getUploadedFiles() as $uploadedFile) {
+    // @var UploadedFileInterface $uploadedFile
+    // @var UploadedFileInterface $movedFile
+    $movedFile = $filter-&gt;filter($uploadedFile);
+    echo $movedFile-&gt;getClientFilename();
+    // File has been renamed to './data/uploads/newfile_4b3403665fea6.txt'
+}</code></pre>
+
+<blockquote>
+<h3 id="psr-7-support">PSR-7 support</h3>
+<p>PSR-7/PSR-17 support has only been available since 2.9.0, and requires a valid
+<a href="https://packagist.org/providers/psr/http-factory-implementation">psr/http-factory-implementation</a>
+in your application, as it relies on the stream and uploaded file factories in
+order to produce the final <code>UploadedFileInterface</code> artifact representing the
+filtered file.</p>
+<p>PSR-17 itself requires PHP 7, so your application will need to be running on
+PHP 7 in order to use this feature.</p>
+<p><a href="https://docs.zendframework.com/zend-diactoros/">zendframework/zend-diactoros 2.0</a>
+provides a PSR-17 implementation, but requires PHP 7.1. If you are still on
+PHP 7.0, either upgrade, or find a compatible psr/http-factory-implementation.</p>
+</blockquote>
 <h2 id="uppercase">Uppercase</h2>
 <p><code>Zend\Filter\File\Uppercase</code> can be used to convert all file contents to
 uppercase.</p>
@@ -585,13 +625,7 @@ information.</p>
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href=".." class="subnavigation__link">zend-filter</a>
-                    </li>
-                
-            
-                
-                    <li class="subnavigation__list-item ">
-                        <a href="../intro/" class="subnavigation__link">Intro</a>
+                        <a href="../intro/" class="subnavigation__link">Introduction</a>
                     </li>
                 
             
