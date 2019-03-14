@@ -474,19 +474,22 @@ and returns a <code>BOOLEAN</code> just as you would get by type casting to <cod
 <h3 id="changing-the-default-behavior">Changing the Default Behavior</h3>
 <p>Sometimes, casting with <code>(boolean)</code> will not suffice. <code>Zend\Filter\Boolean</code>
 allows you to configure specific types to convert, as well as which to omit.</p>
-<p>The following types can be handled:</p>
+<p>The following types can be handled (in this precedence order):</p>
 <ul>
-<li><code>boolean</code>: Returns a boolean value as is.</li>
-<li><code>integer</code>: Converts an integer <code>0</code> value to <code>FALSE</code>.</li>
-<li><code>float</code>: Converts a float <code>0.0</code> value to <code>FALSE</code>.</li>
-<li><code>string</code>: Converts an empty string <code>''</code> to <code>FALSE</code>.</li>
-<li><code>zero</code>: Converts a string containing the single character zero (<code>'0'</code>) to <code>FALSE</code>.</li>
-<li><code>empty_array</code>: Converts an empty <code>array</code> to <code>FALSE</code>.</li>
+<li><code>localized</code>: Converts any string as mapped (case sensitive) in the <code>translations</code> option.</li>
+<li><code>false</code>: Converts a string equal to the word "false" (case insensitive) to boolean <code>FALSE</code>.</li>
 <li><code>null</code>: Converts a <code>NULL</code> value to <code>FALSE</code>.</li>
-<li><code>php</code>: Converts values according to PHP when casting them to <code>BOOLEAN</code>.</li>
-<li><code>false_string</code>: Converts a string containing the word "false" to a boolean <code>FALSE</code>.</li>
-<li><code>yes</code>: Converts a localized string which contains the word "no" to <code>FALSE</code>.</li>
-<li><code>all</code>: Converts all above types to <code>BOOLEAN</code>.</li>
+<li><code>array</code>: Converts an empty <code>array</code> to <code>FALSE</code>.</li>
+<li><code>zero</code>: Converts a string to <code>FALSE</code> if it equates to <code>'0'</code> after type juggling.</li>
+<li><code>string</code>: Converts an empty string <code>''</code> to <code>FALSE</code>.</li>
+<li><code>float</code>: Converts a float <code>0.0</code> value to <code>FALSE</code>.</li>
+<li><code>integer</code>: Converts an integer <code>0</code> value to <code>FALSE</code>.</li>
+<li><code>boolean</code>: Returns a boolean value as is.</li>
+</ul>
+<p>There are 2 additional special types:</p>
+<ul>
+<li><code>all</code>: Converts all above types to <code>BOOLEAN</code>. The same as setting all above types.</li>
+<li><code>php</code>: Converts all above types to <code>BOOLEAN</code> except <code>localized</code> or <code>false</code>. The same as setting all above types except <code>localized</code> or <code>false</code>.</li>
 </ul>
 <p>All other given values will return <code>TRUE</code> by default.</p>
 <p>There are several ways to select which of the above types are filtered. You can
@@ -523,7 +526,7 @@ To set types after instantiation, use the <code>setType()</code> method.</p>
 This means that you can ask your customer in a form for "yes" or "no" within his native language and
 <code>Zend\Filter\Boolean</code> will convert the response to the appropriate boolean value.</p>
 <p>To set the translation and the corresponding value, you can use the <code>translations</code> option or the
-method <code>setTranslations</code>.</p>
+method <code>setTranslations</code>. The translations must be set for any values you wish to map to boolean values.</p>
 <pre class="codehilite"><code class="language-php">$filter = new Zend\Filter\Boolean([
     'type'         =&gt; Zend\Filter\Boolean::TYPE_LOCALIZED,
     'translations' =&gt; [
@@ -550,7 +553,8 @@ are returned without change when <code>casting</code> is set to <code>FALSE</cod
 <div class="table-responsive"><table>
 <thead>
 <tr>
-<th>Type</th>
+<th>Type Constant</th>
+<th>Type String</th>
 <th>True</th>
 <th>False</th>
 </tr>
@@ -558,52 +562,55 @@ are returned without change when <code>casting</code> is set to <code>FALSE</cod
 <tbody>
 <tr>
 <td><code>Zend\Filter\Boolean::TYPE_BOOLEAN</code></td>
+<td><code>boolean</code></td>
 <td><code>TRUE</code></td>
 <td><code>FALSE</code></td>
 </tr>
 <tr>
 <td><code>Zend\Filter\Boolean::TYPE_EMPTY_ARRAY</code></td>
-<td><code>array()</code></td>
+<td><code>array</code></td>
 <td></td>
+<td><code>[]</code></td>
 </tr>
 <tr>
 <td><code>Zend\Filter\Boolean::TYPE_FALSE_STRING</code></td>
-<td><code>"false"</code> (case insensitive)</td>
-<td><code>"true"</code> (case insensitive)</td>
+<td><code>false</code></td>
+<td><code>'false'</code> (case insensitive)</td>
+<td><code>'true'</code> (case insensitive)</td>
 </tr>
 <tr>
 <td><code>Zend\Filter\Boolean::TYPE_FLOAT</code></td>
-<td><code>0.0</code></td>
+<td><code>float</code></td>
 <td><code>1.0</code></td>
+<td><code>0.0</code></td>
 </tr>
 <tr>
 <td><code>Zend\Filter\Boolean::TYPE_INTEGER</code></td>
-<td><code>0</code></td>
+<td><code>integer</code></td>
 <td><code>1</code></td>
-</tr>
-<tr>
-<td><code>Zend\Filter\Boolean::TYPE_LOCALIZED</code></td>
-<td>localized <code>"yes"</code> (case insensitive)</td>
-<td>localized <code>"no"</code> (case insensitive)</td>
+<td><code>0</code></td>
 </tr>
 <tr>
 <td><code>Zend\Filter\Boolean::TYPE_NULL</code></td>
-<td><code>NULL</code></td>
+<td><code>null</code></td>
 <td></td>
+<td><code>NULL</code></td>
 </tr>
 <tr>
 <td><code>Zend\Filter\Boolean::TYPE_STRING</code></td>
-<td><code>""</code></td>
+<td><code>string</code></td>
 <td></td>
+<td><code>''</code></td>
 </tr>
 <tr>
 <td><code>Zend\Filter\Boolean::TYPE_ZERO_STRING</code></td>
-<td><code>"0"</code></td>
-<td><code>"1"</code></td>
+<td><code>zero</code></td>
+<td><code>'1'</code></td>
+<td><code>'0'</code></td>
 </tr>
 </tbody>
 </table></div>
-<p>The following example shows the behaviour when changing the <code>casting</code> option:</p>
+<p>The following example shows the behavior when changing the <code>casting</code> option:</p>
 <pre class="codehilite"><code class="language-php">$filter = new Zend\Filter\Boolean([
     'type'    =&gt; Zend\Filter\Boolean::TYPE_ALL,
     'casting' =&gt; false,
