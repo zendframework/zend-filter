@@ -7,11 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Programmatically filter and normalize data and files.">  
-    <link rel="shortcut icon" href="../img/favicon.ico">
+    <link rel="shortcut icon" href="//img/favicon.ico">
 
-    <title>Writing Filters - zend-filter - Zend Framework Docs</title>
+    <title>zend-filter - Zend Framework Docs</title>
 
-    <link rel="stylesheet" href="../css/styles-f3b53f5ceb.css">
+    <link rel="stylesheet" href="//css/styles-f3b53f5ceb.css">
 </head>
 <body id="page-top">
 
@@ -31,7 +31,7 @@
             
             <span class="navbar-brand">
                 <a class="logo-link" href="https://framework.zend.com/" data-tooltip data-placement="bottom" title="Go to the ZF homepage">
-                    <img src="../img/zend-framework-logo.svg" height="28" alt="Zend Framework">
+                    <img src="//img/zend-framework-logo.svg" height="28" alt="Zend Framework">
                 </a>
             </span>
         </div>
@@ -66,7 +66,7 @@
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="..">zend-filter</a>
+            <a href="/.">zend-filter</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -75,7 +75,7 @@
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href="../intro/" class="subnavigation__link">Introduction</a>
+                        <a href="/intro/" class="subnavigation__link">Introduction</a>
                     </li>
                 
             
@@ -86,43 +86,43 @@
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../standard-filters/" class="subnavigation__link">Standard Filters</a>
+        <a href="/standard-filters/" class="subnavigation__link">Standard Filters</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../word/" class="subnavigation__link">Word Filters</a>
+        <a href="/word/" class="subnavigation__link">Word Filters</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../file/" class="subnavigation__link">File Filters</a>
+        <a href="/file/" class="subnavigation__link">File Filters</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../filter-chains/" class="subnavigation__link">Filter Chains</a>
+        <a href="/filter-chains/" class="subnavigation__link">Filter Chains</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../inflector/" class="subnavigation__link">String Inflection</a>
+        <a href="/inflector/" class="subnavigation__link">String Inflection</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../static-filter/" class="subnavigation__link">Static Filter</a>
+        <a href="/static-filter/" class="subnavigation__link">Static Filter</a>
     </li>
 
                             
                                 
-    <li class="subnavigation__list-item subnavigation__list-item--active">
-        <a href="./" class="subnavigation__link">Writing Filters</a>
+    <li class="subnavigation__list-item ">
+        <a href="/writing-filters/" class="subnavigation__link">Writing Filters</a>
     </li>
 
                             
@@ -199,113 +199,18 @@
             <div class="col-md-9 col-xs-12 content" role="main">
             <!-- content:begin -->
                 
-                    <ol class="breadcrumb" role="navigation" aria-label="breadcrumbs navigation">
-    <li><a href="https://framework.zend.com/">Home</a></li>
 
-    
-        <li><a href="https://docs.zendframework.com/">Documentation</a></li>
+<h1 class="content__title">404</h1>
+<blockquote>
+    <h3>Something went wrong!</h3>
+    <p>
+        We're sorry, but the page you are looking for does not exist.
+    </p>
+</blockquote>
 
-        
-            <li><a href="..">zend-filter</a></li>
-
-            
-                
-                    <li>Reference</li>
-                
-            
-
-            <li class="active">Writing Filters</li>
-        
-    
-</ol>
+<a href="/" class="btn btn-default" role="button">Go to homepage</a>
 
 
-    
-        <h2 class="chapter__headline">Reference</h2>
-    
-
-    
-    
-
-    
-    
-        <div class="toc">
-            <h6 class="toc__headline">In This Article</h6>
-            <ul class="toc__list">
-                
-                    <li class="toc__entry">
-                        <a href="#example" class="toc__link">Example</a>
-                    </li>
-                
-            </ul>
-        </div>
-    
-
-
-    <h1 id="writing-filters">Writing Filters</h1>
-<p><code>Zend\Filter</code> supplies a set of commonly needed filters, but developers will
-often need to write custom filters for their particular use cases. You can do
-so by writing classes that implement <code>Zend\Filter\FilterInterface</code>, which
-defines a single method, <code>filter()</code>.</p>
-<h2 id="example">Example</h2>
-<pre class="codehilite"><code class="language-php">namespace Application\Filter;
-
-use Zend\Filter\FilterInterface;
-
-class MyFilter implements FilterInterface
-{
-    public function filter($value)
-    {
-        // perform some transformation upon $value to arrive on $valueFiltered
-
-        return $valueFiltered;
-    }
-}</code></pre>
-
-<p>To attach an instance of the filter defined above to a filter chain:</p>
-<pre class="codehilite"><code class="language-php">$filterChain = new Zend\Filter\FilterChain();
-$filterChain-&gt;attach(new Application\Filter\MyFilter());</code></pre>
-
-<p>Alternately, add it to the <code>FilterPluginManager</code>:</p>
-<pre class="codehilite"><code class="language-php">$filterChain = new Zend\Filter\FilterChain();
-$filterChain
-    -&gt;getPluginManager()
-    -&gt;setInvokableClass('myfilter', Application\Filter\MyFilter::class)
-$filterChain-&gt;attachByName('myfilter');</code></pre>
-
-
-
-    <nav>
-    <ul class="page-nav hidden-print">
-
-        
-        <li class="page-nav__item">
-            
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../static-filter/">
-                    <i class="fa fa-chevron-left"></i> Previous
-                </a>
-            
-        </li>
-
-        
-        <li class="page-nav__item">
-            
-        </li>
-    </ul>
-</nav>
-
-
-
-    <div class="help-wanted">
-        <p>
-            Found a mistake or want to contribute to the documentation?
-            <a href="https://github.com/zendframework/zend-filter/edit/master/docs/book/writing-filters.md" target="_blank" class="help-wanted__link">
-                Edit this page on GitHub!
-            </a>
-        </p>
-    </div>
-
-                
             <!-- content:end -->
             </div>
             <div class="col-md-3 col-xs-12 sidebar">
@@ -321,7 +226,7 @@ $filterChain-&gt;attachByName('myfilter');</code></pre>
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="..">zend-filter</a>
+            <a href="/.">zend-filter</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -330,7 +235,7 @@ $filterChain-&gt;attachByName('myfilter');</code></pre>
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href="../intro/" class="subnavigation__link">Introduction</a>
+                        <a href="/intro/" class="subnavigation__link">Introduction</a>
                     </li>
                 
             
@@ -341,43 +246,43 @@ $filterChain-&gt;attachByName('myfilter');</code></pre>
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../standard-filters/" class="subnavigation__link">Standard Filters</a>
+        <a href="/standard-filters/" class="subnavigation__link">Standard Filters</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../word/" class="subnavigation__link">Word Filters</a>
+        <a href="/word/" class="subnavigation__link">Word Filters</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../file/" class="subnavigation__link">File Filters</a>
+        <a href="/file/" class="subnavigation__link">File Filters</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../filter-chains/" class="subnavigation__link">Filter Chains</a>
+        <a href="/filter-chains/" class="subnavigation__link">Filter Chains</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../inflector/" class="subnavigation__link">String Inflection</a>
+        <a href="/inflector/" class="subnavigation__link">String Inflection</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../static-filter/" class="subnavigation__link">Static Filter</a>
+        <a href="/static-filter/" class="subnavigation__link">Static Filter</a>
     </li>
 
                             
                                 
-    <li class="subnavigation__list-item subnavigation__list-item--active">
-        <a href="./" class="subnavigation__link">Writing Filters</a>
+    <li class="subnavigation__list-item ">
+        <a href="/writing-filters/" class="subnavigation__link">Writing Filters</a>
     </li>
 
                             
@@ -456,11 +361,11 @@ $filterChain-&gt;attachByName('myfilter');</code></pre>
 </footer>
 
     <script>
-        var base_url = '..',
+        var base_url = '/',
             siteName = 'zend-filter';
     </script>
-    <script src="../js/scripts-8d7ae56abf.js"></script>
-        <script src="../search/main.js"></script>
+    <script src="//js/scripts-8d7ae56abf.js"></script>
+        <script src="/search/main.js"></script>
 
     
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
