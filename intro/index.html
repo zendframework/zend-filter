@@ -12,6 +12,7 @@
     <title>Introduction - zend-filter</title>
 
     <link rel="stylesheet" href="../css/styles-18b942728f.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js"></script>
 </head>
 <body id="page-top">
 
@@ -66,7 +67,7 @@
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="..">zend-filter</a>
+            <a href="">zend-filter</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -75,7 +76,7 @@
             
                 
                     <li class="subnavigation__list-item subnavigation__list-item--active">
-                        <a href="./" class="subnavigation__link">Introduction</a>
+                        <a href="intro/" class="subnavigation__link">Introduction</a>
                     </li>
                 
             
@@ -86,43 +87,43 @@
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../standard-filters/" class="subnavigation__link">Standard Filters</a>
+        <a href="standard-filters/" class="subnavigation__link">Standard Filters</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../word/" class="subnavigation__link">Word Filters</a>
+        <a href="word/" class="subnavigation__link">Word Filters</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../file/" class="subnavigation__link">File Filters</a>
+        <a href="file/" class="subnavigation__link">File Filters</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../filter-chains/" class="subnavigation__link">Filter Chains</a>
+        <a href="filter-chains/" class="subnavigation__link">Filter Chains</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../inflector/" class="subnavigation__link">String Inflection</a>
+        <a href="inflector/" class="subnavigation__link">String Inflection</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../static-filter/" class="subnavigation__link">Static Filter</a>
+        <a href="static-filter/" class="subnavigation__link">Static Filter</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../writing-filters/" class="subnavigation__link">Writing Filters</a>
+        <a href="writing-filters/" class="subnavigation__link">Writing Filters</a>
     </li>
 
                             
@@ -206,7 +207,7 @@
         <li><a href="https://docs.zendframework.com/">Documentation</a></li>
 
         
-            <li><a href="..">zend-filter</a></li>
+            <li><a href="">zend-filter</a></li>
 
             
 
@@ -283,7 +284,7 @@ ampersand (<code>&amp;</code>) and double quote (<code>"</code>) characters:</p>
 <pre class="codehilite"><code class="language-php">$htmlEntities = new Zend\Filter\HtmlEntities();
 
 echo $htmlEntities-&gt;filter('&amp;'); // &amp;amp;
-echo $htmlEntities-&gt;filter('&quot;'); // &amp;quot;</code></pre>
+echo $htmlEntities-&gt;filter('"'); // &amp;quot;</code></pre>
 
 <p>Also, if a filter inherits from <code>Zend\Filter\AbstractFilter</code> (as do all of the
 out-of-the-box filters), you can also use them as invokables:</p>
@@ -305,7 +306,7 @@ instance, and applies the <code>filter()</code> method to the data input.</p>
 <p>You can also pass an array of constructor arguments, if they are needed for the
 filter class:</p>
 <pre class="codehilite"><code class="language-php">echo StaticFilter::execute(
-    '&quot;',
+    '"',
     'HtmlEntities',
     ['quotestyle' =&gt; ENT_QUOTES]
 );</code></pre>
@@ -375,7 +376,7 @@ implementation of the <code>FilterProviderInterface</code>.)</p>
         
         <li class="page-nav__item">
             
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="..">
+                <a rel="prev" class="page-nav__link page-nav__link--prev" href="">
                     <i class="fa fa-chevron-left"></i> Previous
                 </a>
             
@@ -384,7 +385,7 @@ implementation of the <code>FilterProviderInterface</code>.)</p>
         
         <li class="page-nav__item">
             
-                <a rel="next" class="page-nav__link page-nav__link--next" href="../standard-filters/">
+                <a rel="next" class="page-nav__link page-nav__link--next" href="standard-filters/">
                     Next <i class="fa fa-chevron-right"></i>
                 </a>
             
@@ -419,7 +420,7 @@ implementation of the <code>FilterProviderInterface</code>.)</p>
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="..">zend-filter</a>
+            <a href="">zend-filter</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -428,7 +429,7 @@ implementation of the <code>FilterProviderInterface</code>.)</p>
             
                 
                     <li class="subnavigation__list-item subnavigation__list-item--active">
-                        <a href="./" class="subnavigation__link">Introduction</a>
+                        <a href="intro/" class="subnavigation__link">Introduction</a>
                     </li>
                 
             
@@ -439,43 +440,43 @@ implementation of the <code>FilterProviderInterface</code>.)</p>
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../standard-filters/" class="subnavigation__link">Standard Filters</a>
+        <a href="standard-filters/" class="subnavigation__link">Standard Filters</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../word/" class="subnavigation__link">Word Filters</a>
+        <a href="word/" class="subnavigation__link">Word Filters</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../file/" class="subnavigation__link">File Filters</a>
+        <a href="file/" class="subnavigation__link">File Filters</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../filter-chains/" class="subnavigation__link">Filter Chains</a>
+        <a href="filter-chains/" class="subnavigation__link">Filter Chains</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../inflector/" class="subnavigation__link">String Inflection</a>
+        <a href="inflector/" class="subnavigation__link">String Inflection</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../static-filter/" class="subnavigation__link">Static Filter</a>
+        <a href="static-filter/" class="subnavigation__link">Static Filter</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../writing-filters/" class="subnavigation__link">Writing Filters</a>
+        <a href="writing-filters/" class="subnavigation__link">Writing Filters</a>
     </li>
 
                             
@@ -557,9 +558,8 @@ implementation of the <code>FilterProviderInterface</code>.)</p>
         var base_url = '..',
             siteName = 'zend-filter';
     </script>
-    <script src="../js/scripts-0bcb0a3bb3.js"></script>
-        <script src="../search/require.js"></script>
-        <script src="../search/search.js"></script>
+    <script src="../js/scripts-edc4cfa790.js"></script>
+        <script src="../search/main.js"></script>
 
     
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
@@ -588,6 +588,14 @@ implementation of the <code>FilterProviderInterface</code>.)</p>
             </div>
         </div>
     </div>
+
+<script>
+// Anchors
+anchors.options.placement = 'left';
+anchors.add(
+    '.content h1:not(.content__title), .content h2, .content > h3, .content h4, .content h5'
+);
+</script>
 
 
 

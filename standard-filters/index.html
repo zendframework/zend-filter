@@ -12,6 +12,7 @@
     <title>Standard Filters - zend-filter</title>
 
     <link rel="stylesheet" href="../css/styles-18b942728f.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js"></script>
 </head>
 <body id="page-top">
 
@@ -66,7 +67,7 @@
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="..">zend-filter</a>
+            <a href="">zend-filter</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -75,7 +76,7 @@
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href="../intro/" class="subnavigation__link">Introduction</a>
+                        <a href="intro/" class="subnavigation__link">Introduction</a>
                     </li>
                 
             
@@ -86,43 +87,43 @@
                             
                                 
     <li class="subnavigation__list-item subnavigation__list-item--active">
-        <a href="./" class="subnavigation__link">Standard Filters</a>
+        <a href="standard-filters/" class="subnavigation__link">Standard Filters</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../word/" class="subnavigation__link">Word Filters</a>
+        <a href="word/" class="subnavigation__link">Word Filters</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../file/" class="subnavigation__link">File Filters</a>
+        <a href="file/" class="subnavigation__link">File Filters</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../filter-chains/" class="subnavigation__link">Filter Chains</a>
+        <a href="filter-chains/" class="subnavigation__link">Filter Chains</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../inflector/" class="subnavigation__link">String Inflection</a>
+        <a href="inflector/" class="subnavigation__link">String Inflection</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../static-filter/" class="subnavigation__link">Static Filter</a>
+        <a href="static-filter/" class="subnavigation__link">Static Filter</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../writing-filters/" class="subnavigation__link">Writing Filters</a>
+        <a href="writing-filters/" class="subnavigation__link">Writing Filters</a>
     </li>
 
                             
@@ -206,7 +207,7 @@
         <li><a href="https://docs.zendframework.com/">Documentation</a></li>
 
         
-            <li><a href="..">zend-filter</a></li>
+            <li><a href="">zend-filter</a></li>
 
             
                 
@@ -653,7 +654,7 @@ filter which reverses a string:</p>
 <pre class="codehilite"><code class="language-php">$filter = new Zend\Filter\Callback('strrev');
 
 print $filter-&gt;filter('Hello!');
-// returns &quot;!olleH&quot;</code></pre>
+// returns "!olleH"</code></pre>
 
 <p>As you can see it's really simple to use a callback to define custom filters. It
 is also possible to use a method, which is defined within a class, by giving an
@@ -1077,7 +1078,7 @@ $filter-&gt;setKey('encryption key');
 // ]);
 
 $encrypted = $filter-&gt;filter('text to be encrypted');
-printf (&quot;Encrypted text: %s\n&quot;, $encrypted);</code></pre>
+printf ("Encrypted text: %s\n", $encrypted);</code></pre>
 
 <p>You can get and set the encryption values after construction using the
 <code>getEncryption()</code> and <code>setEncryption()</code> methods:</p>
@@ -1088,14 +1089,14 @@ var_dump($filter-&gt;getEncryption());
 
 // Will print:
 //array(4) {
-//  [&quot;key_iteration&quot;]=&gt;
+//  ["key_iteration"]=&gt;
 //  int(5000)
-//  [&quot;algorithm&quot;]=&gt;
-//  string(3) &quot;aes&quot;
-//  [&quot;hash&quot;]=&gt;
-//  string(6) &quot;sha256&quot;
-//  [&quot;key&quot;]=&gt;
-//  string(14) &quot;encryption key&quot;
+//  ["algorithm"]=&gt;
+//  string(3) "aes"
+//  ["hash"]=&gt;
+//  string(6) "sha256"
+//  ["key"]=&gt;
+//  string(14) "encryption key"
 //}</code></pre>
 
 <blockquote>
@@ -1115,7 +1116,7 @@ $text = 'message to encrypt';
 $filter = new \Zend\Filter\Encrypt();
 $filter-&gt;setKey('encryption key');
 for ($i = 0; $i &lt; 10; $i++) {
-   printf(&quot;%d) %s\n&quot;, $i, $filter-&gt;filter($text));
+   printf("%d) %s\n", $i, $filter-&gt;filter($text));
 }</code></pre>
 
 <p>If you want to obtain the same output, you need to specify a fixed vector, using
@@ -1125,7 +1126,7 @@ encryption output:</p>
 $filter = new \Zend\Filter\Encrypt();
 $filter-&gt;setKey('encryption key');
 $filter-&gt;setVector('12345678901234567890');
-printf(&quot;%s\n&quot;, $filter-&gt;filter('message'));
+printf("%s\n", $filter-&gt;filter('message'));
 
 // output:
 //
@@ -1146,7 +1147,7 @@ encryption.</p>
 // use the default adapter (BlockCipher):
 $filter = new Zend\Filter\Decrypt();
 $filter-&gt;setKey('encryption key');
-printf(&quot;Decrypt: %s\n&quot;, $filter-&gt;filter($content));
+printf("Decrypt: %s\n", $filter-&gt;filter($content));
 
 // output:
 // Decrypt: message</code></pre>
@@ -1329,21 +1330,21 @@ print $filter-&gt;filter('&lt;');</code></pre>
 leave double, single, or both types of quotes un-filtered.</p>
 <pre class="codehilite"><code class="language-php">$filter = new Zend\Filter\HtmlEntities(['quotestyle' =&gt; ENT_QUOTES]);
 
-$input = &quot;A 'single' and &quot; . '&quot;double&quot;';
+$input = "A 'single' and " . '"double"';
 print $filter-&gt;filter($input);</code></pre>
 
 <p>The above example returns <code>A &amp;#039;single&amp;#039; and &amp;quot;double&amp;quot;</code>. Notice
 that 'single' as well as "double" quotes are filtered.</p>
 <pre class="codehilite"><code class="language-php">$filter = new Zend\Filter\HtmlEntities(['quotestyle' =&gt; ENT_COMPAT]);
 
-$input = &quot;A 'single' and &quot; . '&quot;double&quot;';
+$input = "A 'single' and " . '"double"';
 print $filter-&gt;filter($input);</code></pre>
 
 <p>The above example returns <code>A 'single' and &amp;quot;double&amp;quot;</code>. Notice that
 "double" quotes are filtered while 'single' quotes are not altered.</p>
 <pre class="codehilite"><code class="language-php">$filter = new Zend\Filter\HtmlEntities(['quotestyle' =&gt; ENT_NOQUOTES]);
 
-$input = &quot;A 'single' and &quot; . '&quot;double&quot;';
+$input = "A 'single' and " . '"double"';
 print $filter-&gt;filter($input);</code></pre>
 
 <p>The above example returns <code>A 'single' and "double"</code>. Notice that neither
@@ -1678,7 +1679,7 @@ echo $filter-&gt;filter('MidCentral');</code></pre>
 <pre class="codehilite"><code class="language-php">$filter = new Zend\Filter\StringToLower();
 
 print $filter-&gt;filter('SAMPLE');
-// returns &quot;sample&quot;</code></pre>
+// returns "sample"</code></pre>
 
 <h3 id="handling-alternate-encoding">Handling alternate encoding</h3>
 <p>By default, <code>StringToLower</code> will only handle characters from the locale of your
@@ -1714,7 +1715,7 @@ $filter-&gt;setEncoding('ISO-8859-1');</code></pre>
 <pre class="codehilite"><code class="language-php">$filter = new Zend\Filter\StringToUpper();
 
 print $filter-&gt;filter('Sample');
-// returns &quot;SAMPLE&quot;</code></pre>
+// returns "SAMPLE"</code></pre>
 
 <h3 id="different-encoded-strings">Different Encoded Strings</h3>
 <p>Like the <code>StringToLower</code> filter, this filter will only handle characters
@@ -1794,7 +1795,7 @@ print $filter-&gt;filter('&lt;B&gt;My content&lt;/B&gt;');</code></pre>
 opening tag will be completely removed:</p>
 <pre class="codehilite"><code class="language-php">$filter = new Zend\Filter\StripTags();
 
-print $filter-&gt;filter('This contains &lt;a href=&quot;http://example.com&quot;&gt;no ending tag');</code></pre>
+print $filter-&gt;filter('This contains &lt;a href="http://example.com"&gt;no ending tag');</code></pre>
 
 <p>The above will return <code>This contains</code>, with the rest being stripped.</p>
 <h3 id="allowing-defined-tags">Allowing Defined Tags</h3>
@@ -1802,7 +1803,7 @@ print $filter-&gt;filter('This contains &lt;a href=&quot;http://example.com&quot
 example, this can be used to strip all markup except for links:</p>
 <pre class="codehilite"><code class="language-php">$filter = new Zend\Filter\StripTags(['allowTags' =&gt; 'a']);
 
-$input  = &quot;A text with &lt;br/&gt; a &lt;a href='link.com'&gt;link&lt;/a&gt;&quot;;
+$input  = "A text with &lt;br/&gt; a &lt;a href='link.com'&gt;link&lt;/a&gt;";
 print $filter-&gt;filter($input);</code></pre>
 
 <p>The above will return <code>A text with a &lt;a href='link.com'&gt;link&lt;/a&gt;</code>;
@@ -1820,7 +1821,7 @@ use of a properly configured html filter.</p>
     'allowAttribs' =&gt; 'src',
 ]);
 
-$input  = &quot;A text with &lt;br/&gt; a &lt;img src='picture.com' width='100'&gt;picture&lt;/img&gt;&quot;;
+$input  = "A text with &lt;br/&gt; a &lt;img src='picture.com' width='100'&gt;picture&lt;/img&gt;";
 print $filter-&gt;filter($input);</code></pre>
 
 <p>The above will return <code>A text with a &lt;img src='picture.com'&gt;picture&lt;/img&gt;</code>; it
@@ -1841,8 +1842,8 @@ tag.</p>
 ];
 $filter = new Zend\Filter\StripTags($allowedElements);
 
-$input = &quot;A text with &lt;br/&gt; a &lt;img src='picture.com' width='100'&gt;picture&lt;/img&gt; click &quot;
-    . &quot;&lt;a href='http://picture.com/zend' id='hereId'&gt;here&lt;/a&gt;!&quot;;
+$input = "A text with &lt;br/&gt; a &lt;img src='picture.com' width='100'&gt;picture&lt;/img&gt; click "
+    . "&lt;a href='http://picture.com/zend' id='hereId'&gt;here&lt;/a&gt;!";
 print $filter-&gt;filter($input);</code></pre>
 
 <p>The above will return <code>A text with a &lt;img src='picture.com'
@@ -1891,7 +1892,7 @@ echo $whitelist-&gt;filter('not-allowed'); // =&gt; null</code></pre>
         
         <li class="page-nav__item">
             
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../intro/">
+                <a rel="prev" class="page-nav__link page-nav__link--prev" href="intro/">
                     <i class="fa fa-chevron-left"></i> Previous
                 </a>
             
@@ -1900,7 +1901,7 @@ echo $whitelist-&gt;filter('not-allowed'); // =&gt; null</code></pre>
         
         <li class="page-nav__item">
             
-                <a rel="next" class="page-nav__link page-nav__link--next" href="../word/">
+                <a rel="next" class="page-nav__link page-nav__link--next" href="word/">
                     Next <i class="fa fa-chevron-right"></i>
                 </a>
             
@@ -1935,7 +1936,7 @@ echo $whitelist-&gt;filter('not-allowed'); // =&gt; null</code></pre>
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="..">zend-filter</a>
+            <a href="">zend-filter</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -1944,7 +1945,7 @@ echo $whitelist-&gt;filter('not-allowed'); // =&gt; null</code></pre>
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href="../intro/" class="subnavigation__link">Introduction</a>
+                        <a href="intro/" class="subnavigation__link">Introduction</a>
                     </li>
                 
             
@@ -1955,43 +1956,43 @@ echo $whitelist-&gt;filter('not-allowed'); // =&gt; null</code></pre>
                             
                                 
     <li class="subnavigation__list-item subnavigation__list-item--active">
-        <a href="./" class="subnavigation__link">Standard Filters</a>
+        <a href="standard-filters/" class="subnavigation__link">Standard Filters</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../word/" class="subnavigation__link">Word Filters</a>
+        <a href="word/" class="subnavigation__link">Word Filters</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../file/" class="subnavigation__link">File Filters</a>
+        <a href="file/" class="subnavigation__link">File Filters</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../filter-chains/" class="subnavigation__link">Filter Chains</a>
+        <a href="filter-chains/" class="subnavigation__link">Filter Chains</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../inflector/" class="subnavigation__link">String Inflection</a>
+        <a href="inflector/" class="subnavigation__link">String Inflection</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../static-filter/" class="subnavigation__link">Static Filter</a>
+        <a href="static-filter/" class="subnavigation__link">Static Filter</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../writing-filters/" class="subnavigation__link">Writing Filters</a>
+        <a href="writing-filters/" class="subnavigation__link">Writing Filters</a>
     </li>
 
                             
@@ -2073,9 +2074,8 @@ echo $whitelist-&gt;filter('not-allowed'); // =&gt; null</code></pre>
         var base_url = '..',
             siteName = 'zend-filter';
     </script>
-    <script src="../js/scripts-0bcb0a3bb3.js"></script>
-        <script src="../search/require.js"></script>
-        <script src="../search/search.js"></script>
+    <script src="../js/scripts-edc4cfa790.js"></script>
+        <script src="../search/main.js"></script>
 
     
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
@@ -2104,6 +2104,14 @@ echo $whitelist-&gt;filter('not-allowed'); // =&gt; null</code></pre>
             </div>
         </div>
     </div>
+
+<script>
+// Anchors
+anchors.options.placement = 'left';
+anchors.add(
+    '.content h1:not(.content__title), .content h2, .content > h3, .content h4, .content h5'
+);
+</script>
 
 
 
