@@ -282,15 +282,14 @@ contain only alphabetic characters.</p>
 <p><code>Zend\Filter\FilterChain</code> provides a simple method by which filters may be
 chained together. The following code illustrates how to chain together two
 filters for the submitted username and fulfill the above requirements:</p>
-<pre class="codehilite"><code class="language-php">// Create a filter chain and add filters to the chain
+<p> <pre class=codehilite><code class=language-php>// Create a filter chain and add filters to the chain
 $filterChain = new Zend\Filter\FilterChain();
 $filterChain
     -&gt;attach(new Zend\I18n\Filter\Alpha())
     -&gt;attach(new Zend\Filter\StringToLower());
 
 // Filter the username
-$username = $filterChain-&gt;filter($_POST['username']);</code></pre>
-
+$username = $filterChain-&gt;filter($_POST['username']);</code></pre></p>
 <p>Filters are run in the order they are added to the filter chain. In the above
 example, the username is first removed of any non-alphabetic characters, and
 then any uppercase characters are converted to lowercase.</p>
@@ -302,12 +301,11 @@ the chain order. Higher values indicate higher priority (execute first), while
 lower and/or negative values indicate lower priority (execute last). The default value is <code>1000</code>.</p>
 <p>In the following example, any uppercase characters are converted to lowercase
 before any non-alphabetic characters are removed.</p>
-<pre class="codehilite"><code class="language-php">// Create a filter chain and add filters to the chain
+<p> <pre class=codehilite><code class=language-php>// Create a filter chain and add filters to the chain
 $filterChain = new Zend\Filter\FilterChain();
 $filterChain
     -&gt;attach(new Zend\I18n\Filter\Alpha())
-    -&gt;attach(new Zend\Filter\StringToLower(), 500);</code></pre>
-
+    -&gt;attach(new Zend\Filter\StringToLower(), 500);</code></pre></p>
 <h2 id="using-the-plugin-manager">Using the Plugin Manager</h2>
 <p>A <code>FilterPluginManager</code> is attached to every <code>FilterChain</code> instance. Every filter
 that is used in a <code>FilterChain</code> must be known to the <code>FilterPluginManager</code>.</p>
@@ -315,28 +313,26 @@ that is used in a <code>FilterChain</code> must be known to the <code>FilterPlug
 first parameter is the name of the filter within the <code>FilterPluginManager</code>. The
 second parameter takes any options for creating the filter instance. The third
 parameter is the priority.</p>
-<pre class="codehilite"><code class="language-php">// Create a filter chain and add filters to the chain
+<p> <pre class=codehilite><code class=language-php>// Create a filter chain and add filters to the chain
 $filterChain = new Zend\Filter\FilterChain();
 $filterChain
     -&gt;attachByName('alpha')
-    -&gt;attachByName('stringtolower', ['encoding' =&gt; 'utf-8'], 500);</code></pre>
-
+    -&gt;attachByName('stringtolower', ['encoding' =&gt; 'utf-8'], 500);</code></pre></p>
 <p>The following example shows how to add a custom filter to the <code>FilterPluginManager</code> and the
 <code>FilterChain</code>:</p>
-<pre class="codehilite"><code class="language-php">$filterChain = new Zend\Filter\FilterChain();
+<p> <pre class=codehilite><code class=language-php>$filterChain = new Zend\Filter\FilterChain();
 $filterChain
     -&gt;getPluginManager()
     -&gt;setInvokableClass('myNewFilter', 'MyCustom\Filter\MyNewFilter');
 $filterChain
     -&gt;attachByName('alpha')
-    -&gt;attachByName('myNewFilter');</code></pre>
-
+    -&gt;attachByName('myNewFilter');</code></pre></p>
 <p>You can also add your own <code>FilterPluginManager</code> implementation:</p>
-<pre class="codehilite"><code class="language-php">$filterChain = new Zend\Filter\FilterChain();
+<p> <pre class=codehilite><code class=language-php>$filterChain = new Zend\Filter\FilterChain();
 $filterChain-&gt;setPluginManager(new MyFilterPluginManager());
 $filterChain
     -&gt;attach(new Zend\I18n\Filter\Alpha())
-    -&gt;attach(new MyCustom\Filter\MyNewFilter());</code></pre>
+    -&gt;attach(new MyCustom\Filter\MyNewFilter());</code></pre></p>
 
 
 
@@ -370,7 +366,7 @@ $filterChain
     <div class="help-wanted">
         <p>
             Found a mistake or want to contribute to the documentation?
-            <a href="https://github.com/zendframework/zend-filter/edit/master/docs/filter-chains.md" target="_blank" class="help-wanted__link">
+            <a href="https://github.com/zendframework/zend-filter/edit/master/docs/book/filter-chains.md" target="_blank" class="help-wanted__link">
                 Edit this page on GitHub!
             </a>
         </p>

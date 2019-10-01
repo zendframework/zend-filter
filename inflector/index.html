@@ -301,7 +301,7 @@ lower case this; and finally, you want to separate the words using a dash
 <p><code>Zend\Filter\Inflector</code> implements <code>Zend\Filter\FilterInterface</code>; you perform
 inflection by calling <code>filter()</code> on the object instance.</p>
 <h2 id="transforming-mixedcase-and-camelcasetext-to-another-format">Transforming MixedCase and camelCaseText to another format</h2>
-<pre class="codehilite"><code class="language-php">$inflector = new Zend\Filter\Inflector('pages/:page.:suffix');
+<p> <pre class=codehilite><code class=language-php>$inflector = new Zend\Filter\Inflector('pages/:page.:suffix');
 $inflector-&gt;setRules([
     ':page'  =&gt; ['Word\CamelCaseToDash', 'StringToLower'],
     'suffix' =&gt; 'html',
@@ -313,8 +313,7 @@ $filtered = $inflector-&gt;filter(['page' =&gt; $string]);
 
 $string   = 'this_is_not_camel_cased';
 $filtered = $inflector-&gt;filter(['page' =&gt; $string]);
-// pages/this_is_not_camel_cased.html</code></pre>
-
+// pages/this_is_not_camel_cased.html</code></pre></p>
 <h2 id="operation">Operation</h2>
 <p>An inflector requires a <strong>target</strong> and one or more <strong>rules</strong>. A target is
 basically a string that defines placeholders for variables you wish to
@@ -329,43 +328,39 @@ using a short name indicating the filter name stripped of any common prefix.</p>
 <p>As an example, you can use any zend-filter concrete implementations; however,
 instead of referring to them as <code>Zend\I18n\Filter\Alpha</code> or
 <code>Zend\Filter\StringToLower</code>, you'd specify only <code>Alpha</code> or <code>StringToLower</code>.</p>
-<h3 id="using-custom-filters">Using Custom Filters</h3>
+<h3>Using Custom Filters</h3>
 <p><code>Zend\Filter\Inflector</code> uses <code>Zend\Filter\FilterPluginManager</code> to manage
 loading filters to use with inflection. By default, filters registered with
 <code>Zend\Filter\FilterPluginManager</code> are available. To access filters with that
 prefix but which occur deeper in the hierarchy, such as the various <code>Word</code>
 filters, simply strip off the <code>Zend\Filter</code> prefix:</p>
-<pre class="codehilite"><code class="language-php">// use Zend\Filter\Word\CamelCaseToDash as a rule
-$inflector-&gt;addRules(['script' =&gt; 'Word\CamelCaseToDash']);</code></pre>
-
+<p> <pre class=codehilite><code class=language-php>// use Zend\Filter\Word\CamelCaseToDash as a rule
+$inflector-&gt;addRules(['script' =&gt; 'Word\CamelCaseToDash']);</code></pre></p>
 <p>To use custom filters, you have two choices: reference them by fully qualified
 class name (e.g., <code>My\Custom\Filter\Mungify</code>), or manipulate the composed
 <code>FilterPluginManager</code> instance.</p>
-<pre class="codehilite"><code class="language-php">$filters = $inflector-&gt;getPluginManager();
-$filters-&gt;addInvokableClass('mungify', 'My\Custom\Filter\Mungify');</code></pre>
-
-<h3 id="setting-the-inflector-target">Setting the Inflector Target</h3>
+<p> <pre class=codehilite><code class=language-php>$filters = $inflector-&gt;getPluginManager();
+$filters-&gt;addInvokableClass('mungify', 'My\Custom\Filter\Mungify');</code></pre></p>
+<h3>Setting the Inflector Target</h3>
 <p>The inflector target is a string with some placeholders for variables.
 Placeholders take the form of an identifier, a colon (<code>:</code>) by default, followed
 by a variable name: <code>:script</code>, <code>:path</code>, etc. The <code>filter()</code> method looks for
 the identifier followed by the variable name being replaced.</p>
 <p>You can change the identifier using the <code>setTargetReplacementIdentifier()</code>
 method, or passing it as the fourth argument to the constructor:</p>
-<pre class="codehilite"><code class="language-php">// Via constructor:
+<p> <pre class=codehilite><code class=language-php>// Via constructor:
 $inflector = new Zend\Filter\Inflector('#foo/#bar.#sfx', array(), null, '#');
 
 // Via accessor:
-$inflector-&gt;setTargetReplacementIdentifier('#');</code></pre>
-
+$inflector-&gt;setTargetReplacementIdentifier('#');</code></pre></p>
 <p>Typically, you will set the target via the constructor. However, you may want
 to re-set the target later. <code>setTarget()</code> can be used for this purpose:</p>
-<pre class="codehilite"><code class="language-php">$inflector-&gt;setTarget('layouts/:script.phtml');</code></pre>
-
+<p> <pre class=codehilite><code class=language-php>$inflector-&gt;setTarget('layouts/:script.phtml');</code></pre></p>
 <p>Additionally, you may wish to have a class member for your class that you can
 use to keep the inflector target updated &mdash; without needing to directly update
 the target each time (thus saving on method calls). <code>setTargetReference()</code>
 allows you to do this:</p>
-<pre class="codehilite"><code class="language-php">class Foo
+<p> <pre class=codehilite><code class=language-php>class Foo
 {
     /**
      * @var string Inflector target
@@ -393,12 +388,11 @@ allows you to do this:</p>
         $this-&gt;target = $target;
         return $this;
     }
-}</code></pre>
-
+}</code></pre></p>
 <h2 id="inflection-rules">Inflection Rules</h2>
 <p>As mentioned in the introduction, there are two types of rules: static and filter-based.</p>
 <blockquote>
-<h3 id="order-is-important">Order is important</h3>
+<h3>Order is important</h3>
 <p>It is important to note that regardless of the method in which you add rules
 to the inflector, either one-by-one, or all-at-once; the order is very
 important. More specific names, or names that might contain other rule names,
@@ -408,23 +402,22 @@ module since <code>module</code> is contained within <code>moduleDir</code>. If 
 before <code>moduleDir</code>, <code>module</code> will match part of <code>moduleDir</code> and process it
 leaving <code>Dir</code> inside of the target uninflected.</p>
 </blockquote>
-<h3 id="static-rules">Static Rules</h3>
+<h3>Static Rules</h3>
 <p>Static rules do simple string substitution; use them when you have a segment in
 the target that will typically be static, but which you want to allow the
 developer to modify. Use the <code>setStaticRule()</code> method to set or modify the
 rule:</p>
-<pre class="codehilite"><code class="language-php">$inflector = new Zend\Filter\Inflector(':script.:suffix');
+<p> <pre class=codehilite><code class=language-php>$inflector = new Zend\Filter\Inflector(':script.:suffix');
 $inflector-&gt;setStaticRule('suffix', 'phtml');
 
 // change it later:
-$inflector-&gt;setStaticRule('suffix', 'php');</code></pre>
-
+$inflector-&gt;setStaticRule('suffix', 'php');</code></pre></p>
 <p>Much like the target itself, you can also bind a static rule to a reference,
 allowing you to update a single variable instead of require a method call; this
 is often useful when your class uses an inflector internally, and you don't
 want your users to need to fetch the inflector in order to update it. The
 <code>setStaticRuleReference()</code> method is used to accomplish this:</p>
-<pre class="codehilite"><code class="language-php">class Foo
+<p> <pre class=codehilite><code class=language-php>class Foo
 {
     /**
      * @var string Suffix
@@ -452,9 +445,8 @@ want your users to need to fetch the inflector in order to update it. The
         $this-&gt;suffix = $suffix;
         return $this;
     }
-}</code></pre>
-
-<h3 id="filter-based-inflector-rules">Filter-Based Inflector Rules</h3>
+}</code></pre></p>
+<h3>Filter-Based Inflector Rules</h3>
 <p><code>Zend\Filter</code> filters may be used as inflector rules as well. Just like static
 rules, these are bound to a target variable; unlike static rules, you may
 define multiple filters to use when inflecting. These filters are processed in
@@ -472,7 +464,7 @@ ways:</p>
   <code>Zend\Filter\FilterInterface</code> may be passed as a filter.</li>
 <li><strong>Array</strong>. An array of one or more strings or filter objects as defined above.</li>
 </ul>
-<pre class="codehilite"><code class="language-php">$inflector = new Zend\Filter\Inflector(':script.:suffix');
+<p> <pre class=codehilite><code class=language-php>$inflector = new Zend\Filter\Inflector(':script.:suffix');
 
 // Set rule to use Zend\Filter\Word\CamelCaseToDash filter
 $inflector-&gt;setFilterRule('script', 'Word\CamelCaseToDash');
@@ -484,8 +476,7 @@ $inflector-&gt;addFilterRule('script', new Zend\Filter\StringToLower());
 $inflector-&gt;setFilterRule('script', [
     'Word\CamelCaseToDash',
     new Zend\Filter\StringToLower()
-]);</code></pre>
-
+]);</code></pre></p>
 <h2 id="setting-many-rules-at-once">Setting Many Rules At Once</h2>
 <p>Typically, it's easier to set many rules at once than to configure a single
 variable and its inflection rules one at a time. <code>Zend\Filter\Inflector</code>'s
@@ -499,7 +490,7 @@ according to the following notation:</p>
 <li><strong>No prefix</strong>: static rule.</li>
 </ul>
 <p>As an example:</p>
-<pre class="codehilite"><code class="language-php">// Could also use setRules() with this notation:
+<p> <pre class=codehilite><code class=language-php>// Could also use setRules() with this notation:
 $inflector-&gt;addRules([
     // Filter rules:
     ':controller' =&gt; ['Word\CamelCaseToUnderscore','StringToLower'],
@@ -507,8 +498,7 @@ $inflector-&gt;addRules([
 
     // Static rule:
     'suffix'      =&gt; 'phtml',
-]);</code></pre>
-
+]);</code></pre></p>
 <h2 id="utility-methods">Utility Methods</h2>
 <p><code>Zend\Filter\Inflector</code> has a number of utility methods for retrieving and
 setting the plugin loader, manipulating and retrieving rules, and controlling
@@ -547,14 +537,14 @@ your inflectors, by passing either type to either the constructor or the
   that specify either values or arrays of values, consistent with <code>addRules()</code>.</li>
 </ul>
 <p>As examples:</p>
-<pre class="codehilite"><code class="language-php">// $options implements Traversable:
+<p> <pre class=codehilite><code class=language-php>// $options implements Traversable:
 
 // With the constructor:
 $inflector = new Zend\Filter\Inflector($options);
 
 // Or with setOptions():
 $inflector = new Zend\Filter\Inflector();
-$inflector-&gt;setOptions($options);</code></pre>
+$inflector-&gt;setOptions($options);</code></pre></p>
 
 
 
@@ -588,7 +578,7 @@ $inflector-&gt;setOptions($options);</code></pre>
     <div class="help-wanted">
         <p>
             Found a mistake or want to contribute to the documentation?
-            <a href="https://github.com/zendframework/zend-filter/edit/master/docs/inflector.md" target="_blank" class="help-wanted__link">
+            <a href="https://github.com/zendframework/zend-filter/edit/master/docs/book/inflector.md" target="_blank" class="help-wanted__link">
                 Edit this page on GitHub!
             </a>
         </p>

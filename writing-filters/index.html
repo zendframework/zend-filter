@@ -277,7 +277,7 @@ often need to write custom filters for their particular use cases. You can do
 so by writing classes that implement <code>Zend\Filter\FilterInterface</code>, which
 defines a single method, <code>filter()</code>.</p>
 <h2 id="example">Example</h2>
-<pre class="codehilite"><code class="language-php">namespace Application\Filter;
+<p> <pre class=codehilite><code class=language-php>namespace Application\Filter;
 
 use Zend\Filter\FilterInterface;
 
@@ -289,18 +289,16 @@ class MyFilter implements FilterInterface
 
         return $valueFiltered;
     }
-}</code></pre>
-
+}</code></pre></p>
 <p>To attach an instance of the filter defined above to a filter chain:</p>
-<pre class="codehilite"><code class="language-php">$filterChain = new Zend\Filter\FilterChain();
-$filterChain-&gt;attach(new Application\Filter\MyFilter());</code></pre>
-
+<p> <pre class=codehilite><code class=language-php>$filterChain = new Zend\Filter\FilterChain();
+$filterChain-&gt;attach(new Application\Filter\MyFilter());</code></pre></p>
 <p>Alternately, add it to the <code>FilterPluginManager</code>:</p>
-<pre class="codehilite"><code class="language-php">$filterChain = new Zend\Filter\FilterChain();
+<p> <pre class=codehilite><code class=language-php>$filterChain = new Zend\Filter\FilterChain();
 $filterChain
     -&gt;getPluginManager()
     -&gt;setInvokableClass('myfilter', Application\Filter\MyFilter::class)
-$filterChain-&gt;attachByName('myfilter');</code></pre>
+$filterChain-&gt;attachByName('myfilter');</code></pre></p>
 
 
 
@@ -330,7 +328,7 @@ $filterChain-&gt;attachByName('myfilter');</code></pre>
     <div class="help-wanted">
         <p>
             Found a mistake or want to contribute to the documentation?
-            <a href="https://github.com/zendframework/zend-filter/edit/master/docs/writing-filters.md" target="_blank" class="help-wanted__link">
+            <a href="https://github.com/zendframework/zend-filter/edit/master/docs/book/writing-filters.md" target="_blank" class="help-wanted__link">
                 Edit this page on GitHub!
             </a>
         </p>

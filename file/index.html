@@ -306,7 +306,7 @@ from the <code>Zend\Filter\Encrypt</code> and <code>Zend\Filter\Decrypt</code> f
 writing operations are performed by the filer; encryption and decryption operations
 are performed by the parent classes.</p>
 <p>Usage:</p>
-<pre class="codehilite"><code class="language-php">use Zend\Filter\File\Encrypt as EncryptFileFilter;
+<p> <pre class=codehilite><code class=language-php>use Zend\Filter\File\Encrypt as EncryptFileFilter;
 use Zend\Http\PhpEnvironment\Request;
 
 $request = new Request();
@@ -317,11 +317,10 @@ $filter = new EncryptFileFilter([
     'adapter' =&gt; 'BlockCipher',
     'key' =&gt; '--our-super-secret-key--',
 ]);
-$filter-&gt;filter($files['my-upload']);</code></pre>
-
+$filter-&gt;filter($files['my-upload']);</code></pre></p>
 <p>In the above example, we pass options to our constructor in order to configure
 the filter. We could instead use use setter methods to inject these options:</p>
-<pre class="codehilite"><code class="language-php">use Zend\Filter\File\Encrypt as EncryptFileFilter;
+<p> <pre class=codehilite><code class=language-php>use Zend\Filter\File\Encrypt as EncryptFileFilter;
 use Zend\Http\PhpEnvironment\Request;
 
 $request = new Request();
@@ -331,20 +330,19 @@ $files   = $request-&gt;getFiles();
 $filter = new EncryptFileFilter();
 $filter-&gt;setAdapter('BlockCipher');
 $filter-&gt;setKey('--our-super-secret-key--');
-$filter-&gt;filter($files['my-upload']);</code></pre>
-
+$filter-&gt;filter($files['my-upload']);</code></pre></p>
 <p>Check the <a href="/zend-filter/standard-filters/#encrypt-and-decrypt">Encrypt and Decrypt filter documentation</a>
 for more information about options and adapters.</p>
 <h2 id="lowercase">Lowercase</h2>
 <p><code>Zend\Filter\File\Lowercase</code> can be used to convert all file contents to
 lowercase.</p>
-<h3 id="supported-options">Supported Options</h3>
+<h3>Supported Options</h3>
 <p>The following set of options are supported:</p>
 <ul>
 <li><code>encoding</code>: Set the encoding to use during conversion.</li>
 </ul>
-<h3 id="basic-usage">Basic Usage</h3>
-<pre class="codehilite"><code class="language-php">use Zend\Filter\File\LowerCase;
+<h3>Basic Usage</h3>
+<p> <pre class=codehilite><code class=language-php>use Zend\Filter\File\LowerCase;
 use Zend\Http\PhpEnvironment\Request;
 
 $request = new Request();
@@ -352,8 +350,7 @@ $files   = $request-&gt;getFiles();
 // i.e. $files['my-upload']['tmp_name'] === '/tmp/php5Wx0aJ'
 
 $filter = new LowerCase();
-$filter-&gt;filter($files['my-upload']);</code></pre>
-
+$filter-&gt;filter($files['my-upload']);</code></pre></p>
 <p>This example converts the contents of an uploaded file to lowercase.  After this
 process, you can use the <a href="#rename">Rename</a> or <a href="#renameupload">RenameUpload</a>
 filter to replace this file with your original file, or read directly from file.
@@ -361,7 +358,7 @@ But, don't forget, if you upload a file and send your <code>$_FILES</code> array
 filter method, the <code>LowerCase</code> filter will only change the temporary file
 (<code>tmp_name</code> index of array), not the original file. Let's check following
 example:</p>
-<pre class="codehilite"><code class="language-php">use Zend\Filter\File\LowerCase;
+<p> <pre class=codehilite><code class=language-php>use Zend\Filter\File\LowerCase;
 use Zend\Filter\File\Rename;
 use Zend\Http\PhpEnvironment\Request;
 
@@ -375,14 +372,13 @@ $renameFilter = new Rename([
     'target'    =&gt; '/tmp/newfile.txt',
     'randomize' =&gt; true,
 ]);
-$filename = $renameFilter-&gt;filter($file['tmp_name']);</code></pre>
-
+$filename = $renameFilter-&gt;filter($file['tmp_name']);</code></pre></p>
 <p>With this example, the final, stored file on the server will have the lowercased
 content.</p>
 <p>If you want to use a specific encoding when converting file content, you should
 specify the encoding when instantiating the <code>LowerCase</code> filter, or use the
 <code>setEncoding</code> method to change it.</p>
-<pre class="codehilite"><code class="language-php">use Zend\Filter\File\LowerCase;
+<p> <pre class=codehilite><code class=language-php>use Zend\Filter\File\LowerCase;
 use Zend\Http\PhpEnvironment\Request;
 
 $request = new Request();
@@ -391,14 +387,13 @@ $files   = $request-&gt;getFiles();
 
 $filter = new LowerCase();
 $filter-&gt;setEncoding('ISO-8859-1');
-$filter-&gt;filter($files['my-upload']);</code></pre>
-
+$filter-&gt;filter($files['my-upload']);</code></pre></p>
 <p>The <code>LowerCase</code> filter extends from the <code>StringToLower</code> filter; read the
 <a href="/zend-filter/standard-filters/#stringtolower"><code>StringToLower</code> documentation</a>
 for more information about encoding and its exceptions.</p>
 <h2 id="rename">Rename</h2>
 <p><code>Zend\Filter\File\Rename</code> can be used to rename a file and/or move a file to a new path.</p>
-<h3 id="supported-options_1">Supported Options</h3>
+<h3>Supported Options</h3>
 <p>The following set of options are supported:</p>
 <ul>
 <li><code>target</code> (string; default: <code>*</code>): Target filename or directory; the new name
@@ -416,28 +411,25 @@ for more information about encoding and its exceptions.</p>
 <p>An array of option sets is also supported, where a single <code>Rename</code> filter
 instance can filter several files using different options. The options used for
 the filtered file will be matched from the <code>source</code> option in the options set.</p>
-<h3 id="usage-examples">Usage Examples</h3>
+<h3>Usage Examples</h3>
 <p>Move all filtered files to a different directory:</p>
-<pre class="codehilite"><code class="language-php">// 'target' option is assumed if param is a string
+<p> <pre class=codehilite><code class=language-php>// 'target' option is assumed if param is a string
 $filter = new \Zend\Filter\File\Rename('/tmp/');
 echo $filter-&gt;filter('./myfile.txt');
-// File has been moved to '/tmp/myfile.txt'</code></pre>
-
+// File has been moved to '/tmp/myfile.txt'</code></pre></p>
 <p>Rename all filtered files to a new name:</p>
-<pre class="codehilite"><code class="language-php">$filter = new \Zend\Filter\File\Rename('/tmp/newfile.txt');
+<p> <pre class=codehilite><code class=language-php>$filter = new \Zend\Filter\File\Rename('/tmp/newfile.txt');
 echo $filter-&gt;filter('./myfile.txt');
-// File has been renamed to '/tmp/newfile.txt'</code></pre>
-
+// File has been renamed to '/tmp/newfile.txt'</code></pre></p>
 <p>Move to a new path, and randomize file names:</p>
-<pre class="codehilite"><code class="language-php">$filter = new \Zend\Filter\File\Rename([
+<p> <pre class=codehilite><code class=language-php>$filter = new \Zend\Filter\File\Rename([
     'target'    =&gt; '/tmp/newfile.txt',
     'randomize' =&gt; true,
 ]);
 echo $filter-&gt;filter('./myfile.txt');
-// File has been renamed to '/tmp/newfile_4b3403665fea6.txt'</code></pre>
-
+// File has been renamed to '/tmp/newfile_4b3403665fea6.txt'</code></pre></p>
 <p>Configure different options for several possible source files:</p>
-<pre class="codehilite"><code class="language-php">$filter = new \Zend\Filter\File\Rename([
+<p> <pre class=codehilite><code class=language-php>$filter = new \Zend\Filter\File\Rename([
     [
         'source'    =&gt; 'fileA.txt'
         'target'    =&gt; '/dest1/newfileA.txt',
@@ -452,9 +444,8 @@ echo $filter-&gt;filter('./myfile.txt');
 echo $filter-&gt;filter('fileA.txt');
 // File has been renamed to '/dest1/newfileA.txt'
 echo $filter-&gt;filter('fileB.txt');
-// File has been renamed to '/dest2/newfileB_4b3403665fea6.txt'</code></pre>
-
-<h3 id="public-methods">Public Methods</h3>
+// File has been renamed to '/dest2/newfileB_4b3403665fea6.txt'</code></pre></p>
+<h3>Public Methods</h3>
 <p>The <code>Rename</code> filter defines the following public methods in addition to <code>filter()</code>:
 follows:</p>
 <ul>
@@ -466,7 +457,7 @@ follows:</p>
 </ul>
 <h2 id="renameupload">RenameUpload</h2>
 <p><code>Zend\Filter\File\RenameUpload</code> can be used to rename or move an uploaded file to a new path.</p>
-<h3 id="supported-options_2">Supported Options</h3>
+<h3>Supported Options</h3>
 <p>The following set of options are supported:</p>
 <ul>
 <li><code>target</code> (string; default: <code>*</code>): Target directory or full filename path.</li>
@@ -494,7 +485,7 @@ follows:</p>
   renamed file.  (Since 2.9.0)</li>
 </ul>
 <blockquote>
-<h4 id="using-the-upload-name-is-unsafe">Using the upload name is unsafe</h4>
+<h4>Using the upload name is unsafe</h4>
 <p>Be <strong>very</strong> careful when using the <code>use_upload_name</code> option. For instance,
 extremely bad things could happen if you were to allow uploaded <code>.php</code> files
 (or other CGI files) to be moved into the <code>DocumentRoot</code>.</p>
@@ -504,9 +495,9 @@ security risks.</p>
 <p><code>RenameUpload</code> does not support an array of options like the<code>Rename</code> filter.
 When filtering HTML5 file uploads with the <code>multiple</code> attribute set, all files
 will be filtered with the same option settings.</p>
-<h3 id="usage-examples_1">Usage Examples</h3>
+<h3>Usage Examples</h3>
 <p>Move all filtered files to a different directory:</p>
-<pre class="codehilite"><code class="language-php">use Zend\Http\PhpEnvironment\Request;
+<p> <pre class=codehilite><code class=language-php>use Zend\Http\PhpEnvironment\Request;
 
 $request = new Request();
 $files   = $request-&gt;getFiles();
@@ -521,10 +512,9 @@ echo $filter-&gt;filter($files['my-upload']);
 // ... or retain the uploaded file name
 $filter-&gt;setUseUploadName(true);
 echo $filter-&gt;filter($files['my-upload']);
-// File has been moved to './data/uploads/myfile.txt'</code></pre>
-
+// File has been moved to './data/uploads/myfile.txt'</code></pre></p>
 <p>Rename all filtered files to a new name:</p>
-<pre class="codehilite"><code class="language-php">use Zend\Http\PhpEnvironment\Request;
+<p> <pre class=codehilite><code class=language-php>use Zend\Http\PhpEnvironment\Request;
 
 $request = new Request();
 $files   = $request-&gt;getFiles();
@@ -532,10 +522,9 @@ $files   = $request-&gt;getFiles();
 
 $filter = new \Zend\Filter\File\RenameUpload('./data/uploads/newfile.txt');
 echo $filter-&gt;filter($files['my-upload']);
-// File has been renamed to './data/uploads/newfile.txt'</code></pre>
-
+// File has been renamed to './data/uploads/newfile.txt'</code></pre></p>
 <p>Move to a new path and randomize file names:</p>
-<pre class="codehilite"><code class="language-php">use Zend\Http\PhpEnvironment\Request;
+<p> <pre class=codehilite><code class=language-php>use Zend\Http\PhpEnvironment\Request;
 
 $request = new Request();
 $files   = $request-&gt;getFiles();
@@ -546,10 +535,9 @@ $filter = new \Zend\Filter\File\RenameUpload([
     'randomize' =&gt; true,
 ]);
 echo $filter-&gt;filter($files['my-upload']);
-// File has been renamed to './data/uploads/newfile_4b3403665fea6.txt'</code></pre>
-
+// File has been renamed to './data/uploads/newfile_4b3403665fea6.txt'</code></pre></p>
 <p>Handle a PSR-7 uploaded file:</p>
-<pre class="codehilite"><code class="language-php">use Psr\Http\Message\ServerRequestInterface;
+<p> <pre class=codehilite><code class=language-php>use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\UploadedFileFactoryInterface;
 use Psr\Http\Message\UploadedFileInterface;
@@ -571,10 +559,9 @@ foreach ($request-&gt;getUploadedFiles() as $uploadedFile) {
     $movedFile = $filter-&gt;filter($uploadedFile);
     echo $movedFile-&gt;getClientFilename();
     // File has been renamed to './data/uploads/newfile_4b3403665fea6.txt'
-}</code></pre>
-
+}</code></pre></p>
 <blockquote>
-<h3 id="psr-7-support">PSR-7 support</h3>
+<h3>PSR-7 support</h3>
 <p>PSR-7/PSR-17 support has only been available since 2.9.0, and requires a valid
 <a href="https://packagist.org/providers/psr/http-factory-implementation">psr/http-factory-implementation</a>
 in your application, as it relies on the stream and uploaded file factories in
@@ -589,13 +576,13 @@ PHP 7.0, either upgrade, or find a compatible psr/http-factory-implementation.</
 <h2 id="uppercase">Uppercase</h2>
 <p><code>Zend\Filter\File\Uppercase</code> can be used to convert all file contents to
 uppercase.</p>
-<h3 id="supported-options_3">Supported Options</h3>
+<h3>Supported Options</h3>
 <p>The following set of options are supported:</p>
 <ul>
 <li><code>encoding</code>: Set the encoding to use during conversion.</li>
 </ul>
-<h3 id="basic-usage_1">Basic Usage</h3>
-<pre class="codehilite"><code class="language-php">use Zend\Filter\File\UpperCase;
+<h3>Basic Usage</h3>
+<p> <pre class=codehilite><code class=language-php>use Zend\Filter\File\UpperCase;
 use Zend\Http\PhpEnvironment\Request;
 
 $request = new Request();
@@ -603,8 +590,7 @@ $files   = $request-&gt;getFiles();
 // i.e. $files['my-upload']['tmp_name'] === '/tmp/php5Wx0aJ'
 
 $filter = new UpperCase();
-$filter-&gt;filter($files['my-upload']);</code></pre>
-
+$filter-&gt;filter($files['my-upload']);</code></pre></p>
 <p>See the documentation on the <a href="#lowercase"><code>LowerCase</code></a> filter, above, for more
 information.</p>
 
@@ -640,7 +626,7 @@ information.</p>
     <div class="help-wanted">
         <p>
             Found a mistake or want to contribute to the documentation?
-            <a href="https://github.com/zendframework/zend-filter/edit/master/docs/file.md" target="_blank" class="help-wanted__link">
+            <a href="https://github.com/zendframework/zend-filter/edit/master/docs/book/file.md" target="_blank" class="help-wanted__link">
                 Edit this page on GitHub!
             </a>
         </p>
