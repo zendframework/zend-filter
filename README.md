@@ -2,7 +2,7 @@
 
 > ## Repository abandoned 2019-12-31
 >
-> This repository has moved to laminas/laminas-filter.
+> This repository has moved to [laminas/laminas-filter](https://github.com/laminas/laminas-filter).
 
 [![Build Status](https://secure.travis-ci.org/zendframework/zend-filter.svg?branch=master)](https://secure.travis-ci.org/zendframework/zend-filter)
 [![Coverage Status](https://coveralls.io/repos/github/zendframework/zend-filter/badge.svg?branch=master)](https://coveralls.io/github/zendframework/zend-filter?branch=master)
