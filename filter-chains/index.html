@@ -7,12 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Programmatically filter and normalize data and files.">  
-    <link rel="canonical" href="https://docs.zendframework.com/zend-filter/filter-chains/">
+    <link rel="canonical" href="https://docs.zendframework.com/filter-chains/">
     <link rel="shortcut icon" href="../img/favicon.ico">
 
     <title>Filter Chains - zend-filter - Zend Framework Docs</title>
 
-    <link rel="stylesheet" href="../css/styles-5cfabd53ee.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body id="page-top">
 
@@ -205,9 +205,9 @@
     <div class="laminas-announcement">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-                Zend Framework transitions to the Linux Foundation. <a href="https://getlaminas.org">Learn More.</a>
-            </div>
+            <div class="col-xs-12"><strong>
+                This package has moved. Visit its replacement, <a href="https://docs.laminas.dev/laminas-filter/">laminas/laminas-filter.</a>
+            </strong></div>
         </div>
     </div>
 </div>
@@ -282,14 +282,16 @@ contain only alphabetic characters.</p>
 <p><code>Zend\Filter\FilterChain</code> provides a simple method by which filters may be
 chained together. The following code illustrates how to chain together two
 filters for the submitted username and fulfill the above requirements:</p>
-<p> <pre class=codehilite><code class=language-php>// Create a filter chain and add filters to the chain
+<pre><code class="language-php">// Create a filter chain and add filters to the chain
 $filterChain = new Zend\Filter\FilterChain();
 $filterChain
     -&gt;attach(new Zend\I18n\Filter\Alpha())
     -&gt;attach(new Zend\Filter\StringToLower());
 
 // Filter the username
-$username = $filterChain-&gt;filter($_POST['username']);</code></pre></p>
+$username = $filterChain-&gt;filter($_POST['username']);
+</code></pre>
+
 <p>Filters are run in the order they are added to the filter chain. In the above
 example, the username is first removed of any non-alphabetic characters, and
 then any uppercase characters are converted to lowercase.</p>
@@ -301,11 +303,13 @@ the chain order. Higher values indicate higher priority (execute first), while
 lower and/or negative values indicate lower priority (execute last). The default value is <code>1000</code>.</p>
 <p>In the following example, any uppercase characters are converted to lowercase
 before any non-alphabetic characters are removed.</p>
-<p> <pre class=codehilite><code class=language-php>// Create a filter chain and add filters to the chain
+<pre><code class="language-php">// Create a filter chain and add filters to the chain
 $filterChain = new Zend\Filter\FilterChain();
 $filterChain
     -&gt;attach(new Zend\I18n\Filter\Alpha())
-    -&gt;attach(new Zend\Filter\StringToLower(), 500);</code></pre></p>
+    -&gt;attach(new Zend\Filter\StringToLower(), 500);
+</code></pre>
+
 <h2 id="using-the-plugin-manager">Using the Plugin Manager</h2>
 <p>A <code>FilterPluginManager</code> is attached to every <code>FilterChain</code> instance. Every filter
 that is used in a <code>FilterChain</code> must be known to the <code>FilterPluginManager</code>.</p>
@@ -313,26 +317,31 @@ that is used in a <code>FilterChain</code> must be known to the <code>FilterPlug
 first parameter is the name of the filter within the <code>FilterPluginManager</code>. The
 second parameter takes any options for creating the filter instance. The third
 parameter is the priority.</p>
-<p> <pre class=codehilite><code class=language-php>// Create a filter chain and add filters to the chain
+<pre><code class="language-php">// Create a filter chain and add filters to the chain
 $filterChain = new Zend\Filter\FilterChain();
 $filterChain
     -&gt;attachByName('alpha')
-    -&gt;attachByName('stringtolower', ['encoding' =&gt; 'utf-8'], 500);</code></pre></p>
+    -&gt;attachByName('stringtolower', ['encoding' =&gt; 'utf-8'], 500);
+</code></pre>
+
 <p>The following example shows how to add a custom filter to the <code>FilterPluginManager</code> and the
 <code>FilterChain</code>:</p>
-<p> <pre class=codehilite><code class=language-php>$filterChain = new Zend\Filter\FilterChain();
+<pre><code class="language-php">$filterChain = new Zend\Filter\FilterChain();
 $filterChain
     -&gt;getPluginManager()
     -&gt;setInvokableClass('myNewFilter', 'MyCustom\Filter\MyNewFilter');
 $filterChain
     -&gt;attachByName('alpha')
-    -&gt;attachByName('myNewFilter');</code></pre></p>
+    -&gt;attachByName('myNewFilter');
+</code></pre>
+
 <p>You can also add your own <code>FilterPluginManager</code> implementation:</p>
-<p> <pre class=codehilite><code class=language-php>$filterChain = new Zend\Filter\FilterChain();
+<pre><code class="language-php">$filterChain = new Zend\Filter\FilterChain();
 $filterChain-&gt;setPluginManager(new MyFilterPluginManager());
 $filterChain
     -&gt;attach(new Zend\I18n\Filter\Alpha())
-    -&gt;attach(new MyCustom\Filter\MyNewFilter());</code></pre></p>
+    -&gt;attach(new MyCustom\Filter\MyNewFilter());
+</code></pre>
 
 
 
@@ -504,7 +513,7 @@ $filterChain
             
             <div class="col-md-9">
                 <h4 class="footer__headline">Copyright</h4>
-                <p>&copy; 2006-2019 by <a href="https://www.zend.com/">Zend</a>, a <a href="https://www.roguewave.com/">Rogue Wave Company</a>.</p>
+                <p>&copy; 2006-2020 by <a href="https://www.zend.com/">Zend</a> by <a href="https://www.perforce.com/">Perforce</a>.</p>
             </div>
 
             
@@ -512,10 +521,10 @@ $filterChain
                 <h4 class="footer__headline">Support</h4>
                 <ul class="support__list">
                     <li class="support__list-item">
-                        <a href="https://discourse.zendframework.com" class="support__link" title="Forum"><i class="fa fa-comments"></i></a>
+                        <a href="https://discourse.laminas.dev" class="support__link" title="Forum"><i class="fa fa-comments"></i></a>
                     </li>
                     <li class="support__list-item">
-                        <a href="https://zendframework-slack.herokuapp.com" class="support__link" title="Chat"><i class="fa fa-slack"></i></a>
+                        <a href="https://laminas.dev/chat/" class="support__link" title="Chat"><i class="fa fa-slack"></i></a>
                     </li>
                     <li class="support__list-item">
                         <a href="https://github.com/zendframework" class="support__link" title="Github"><i class="fa fa-github"></i></a>
@@ -523,27 +532,28 @@ $filterChain
                     <li class="support__list-item">
                         <a href="https://twitter.com/zfdevteam" class="support__link" title="Twitter"><i class="fa fa-twitter"></i></a>
                     </li>
-                    <li class="support__list-item">
-                        <a href="https://tinyletter.com/mwopzend" class="support__link" title="Newsletter"><i class="fa fa-envelope"></i></a>
-                    </li>
-                    <li class="support__list-item">
-                        <a href="https://framework.zend.com/blog/feed-rss.xml" class="support__link" title="Blog feed"><i class="fa fa-rss"></i></a>
-                    </li>
-                    <li class="support__list-item">
-                        <a href="https://framework.zend.com/security/feed" class="support__link" title="Security feed"><i class="fa fa-rss-square"></i></a>
-                    </li>
                 </ul>
             </div>
         </div>
     </div>
 </footer>
 
+<nav class="cookie-bar navbar navbar-fixed-bottom navbar-default hidden">
+    <div class="container">
+        <p class="navbar-text">
+            We use cookies to allow you to dismiss dialogs such as the Laminas
+            Project notification.
+        </p>
+        <button type="button" class="cookie-button btn btn-default navbar-btn">Allow Cookies</button>
+    </div>
+</nav>
+
     <script>
         var base_url = '..',
             siteName = 'zend-filter';
     </script>
-    <script src="../js/scripts-8d7ae56abf.js"></script>
-        <script src="../search/main.js"></script>
+    <script src="/js/scripts.js"></script>
+    <script src="../search/main.js"></script>
 
     
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">

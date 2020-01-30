@@ -7,12 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Programmatically filter and normalize data and files.">  
-    <link rel="canonical" href="https://docs.zendframework.com/zend-filter/word/">
+    <link rel="canonical" href="https://docs.zendframework.com/word/">
     <link rel="shortcut icon" href="../img/favicon.ico">
 
     <title>Word Filters - zend-filter - Zend Framework Docs</title>
 
-    <link rel="stylesheet" href="../css/styles-5cfabd53ee.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body id="page-top">
 
@@ -205,9 +205,9 @@
     <div class="laminas-announcement">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-                Zend Framework transitions to the Linux Foundation. <a href="https://getlaminas.org">Learn More.</a>
-            </div>
+            <div class="col-xs-12"><strong>
+                This package has moved. Visit its replacement, <a href="https://docs.laminas.dev/laminas-filter/">laminas/laminas-filter.</a>
+            </strong></div>
         </div>
     </div>
 </div>
@@ -323,9 +323,11 @@ to filtering word strings.</p>
 <h3>Supported Options</h3>
 <p>There are no additional options for <code>Zend\Filter\Word\CamelCaseToDash</code>:</p>
 <h3>Basic Usage</h3>
-<p> <pre class=codehilite><code class=language-php>$filter = new Zend\Filter\Word\CamelCaseToDash();
+<pre><code class="language-php">$filter = new Zend\Filter\Word\CamelCaseToDash();
 
-print $filter-&gt;filter('ThisIsMyContent');</code></pre></p>
+print $filter-&gt;filter('ThisIsMyContent');
+</code></pre>
+
 <p>The above example returns <code>This-Is-My-Content</code>.</p>
 <h2 id="camelcasetoseparator">CamelCaseToSeparator</h2>
 <p>This filter modifies a given string such that <code>CamelCaseWords</code> are converted to <code>Camel Case Words</code>.</p>
@@ -336,15 +338,19 @@ print $filter-&gt;filter('ThisIsMyContent');</code></pre></p>
   is a space.</li>
 </ul>
 <h3>Basic Usage</h3>
-<p> <pre class=codehilite><code class=language-php>$filter = new Zend\Filter\Word\CamelCaseToSeparator(':');
+<pre><code class="language-php">$filter = new Zend\Filter\Word\CamelCaseToSeparator(':');
 // or new Zend\Filter\Word\CamelCaseToSeparator(array('separator' =&gt; ':'));
 
-print $filter-&gt;filter('ThisIsMyContent');</code></pre></p>
+print $filter-&gt;filter('ThisIsMyContent');
+</code></pre>
+
 <p>The above example returns <code>This:Is:My:Content</code>.</p>
 <h3>Default Behavior</h3>
-<p> <pre class=codehilite><code class=language-php>$filter = new Zend\Filter\Word\CamelCaseToSeparator();
+<pre><code class="language-php">$filter = new Zend\Filter\Word\CamelCaseToSeparator();
 
-print $filter-&gt;filter('ThisIsMyContent');</code></pre></p>
+print $filter-&gt;filter('ThisIsMyContent');
+</code></pre>
+
 <p>The above example returns <code>This Is My Content</code>.</p>
 <h2 id="camelcasetounderscore">CamelCaseToUnderscore</h2>
 <p>This filter modifies a given string such that <code>CamelCaseWords</code> are converted to
@@ -352,9 +358,11 @@ print $filter-&gt;filter('ThisIsMyContent');</code></pre></p>
 <h3>Supported Options</h3>
 <p>There are no additional options for <code>Zend\Filter\Word\CamelCaseToUnderscore</code>:</p>
 <h3>Basic Usage</h3>
-<p> <pre class=codehilite><code class=language-php>$filter = new Zend\Filter\Word\CamelCaseToUnderscore();
+<pre><code class="language-php">$filter = new Zend\Filter\Word\CamelCaseToUnderscore();
 
-print $filter-&gt;filter('ThisIsMyContent');</code></pre></p>
+print $filter-&gt;filter('ThisIsMyContent');
+</code></pre>
+
 <p>The above example returns <code>This_Is_My_Content</code>.</p>
 <h2 id="dashtocamelcase">DashToCamelCase</h2>
 <p>This filter modifies a given string such that <code>words-with-dashes</code> are converted
@@ -362,9 +370,11 @@ to <code>WordsWithDashes</code>.</p>
 <h3>Supported Options</h3>
 <p>There are no additional options for <code>Zend\Filter\Word\DashToCamelCase</code>:</p>
 <h3>Basic Usage</h3>
-<p> <pre class=codehilite><code class=language-php>$filter = new Zend\Filter\Word\DashToCamelCase();
+<pre><code class="language-php">$filter = new Zend\Filter\Word\DashToCamelCase();
 
-print $filter-&gt;filter('this-is-my-content');</code></pre></p>
+print $filter-&gt;filter('this-is-my-content');
+</code></pre>
+
 <p>The above example returns <code>ThisIsMyContent</code>.</p>
 <h2 id="dashtoseparator">DashToSeparator</h2>
 <p>This filter modifies a given string such that <code>words-with-dashes</code> are converted
@@ -376,15 +386,19 @@ to <code>words with dashes</code>.</p>
   is a space.</li>
 </ul>
 <h3>Basic Usage</h3>
-<p> <pre class=codehilite><code class=language-php>$filter = new Zend\Filter\Word\DashToSeparator('+');
+<pre><code class="language-php">$filter = new Zend\Filter\Word\DashToSeparator('+');
 // or new Zend\Filter\Word\CamelCaseToSeparator(array('separator' =&gt; '+'));
 
-print $filter-&gt;filter('this-is-my-content');</code></pre></p>
+print $filter-&gt;filter('this-is-my-content');
+</code></pre>
+
 <p>The above example returns <code>this+is+my+content</code>.</p>
 <h3>Default Behavior</h3>
-<p> <pre class=codehilite><code class=language-php>$filter = new Zend\Filter\Word\DashToSeparator();
+<pre><code class="language-php">$filter = new Zend\Filter\Word\DashToSeparator();
 
-print $filter-&gt;filter('this-is-my-content');</code></pre></p>
+print $filter-&gt;filter('this-is-my-content');
+</code></pre>
+
 <p>The above example returns <code>this is my content</code>.</p>
 <h2 id="dashtounderscore">DashToUnderscore</h2>
 <p>This filter modifies a given string such that <code>words-with-dashes</code> are converted
@@ -392,9 +406,11 @@ to <code>words_with_dashes</code>.</p>
 <h3>Supported Options</h3>
 <p>There are no additional options for <code>Zend\Filter\Word\DashToUnderscore</code>:</p>
 <h3>Basic Usage</h3>
-<p> <pre class=codehilite><code class=language-php>$filter = new Zend\Filter\Word\DashToUnderscore();
+<pre><code class="language-php">$filter = new Zend\Filter\Word\DashToUnderscore();
 
-print $filter-&gt;filter('this-is-my-content');</code></pre></p>
+print $filter-&gt;filter('this-is-my-content');
+</code></pre>
+
 <p>The above example returns <code>this_is_my_content</code>.</p>
 <h2 id="separatortocamelcase">SeparatorToCamelCase</h2>
 <p>This filter modifies a given string such that <code>words with separators</code> are
@@ -406,15 +422,19 @@ converted to <code>WordsWithSeparators</code>.</p>
   is a space.</li>
 </ul>
 <h3>Basic Usage</h3>
-<p> <pre class=codehilite><code class=language-php>$filter = new Zend\Filter\Word\SeparatorToCamelCase(':');
+<pre><code class="language-php">$filter = new Zend\Filter\Word\SeparatorToCamelCase(':');
 // or new Zend\Filter\Word\SeparatorToCamelCase(array('separator' =&gt; ':'));
 
-print $filter-&gt;filter('this:is:my:content');</code></pre></p>
+print $filter-&gt;filter('this:is:my:content');
+</code></pre>
+
 <p>The above example returns <code>ThisIsMyContent</code>.</p>
 <h3>Default Behavior</h3>
-<p> <pre class=codehilite><code class=language-php>$filter = new Zend\Filter\Word\SeparatorToCamelCase();
+<pre><code class="language-php">$filter = new Zend\Filter\Word\SeparatorToCamelCase();
 
-print $filter-&gt;filter('this is my content');</code></pre></p>
+print $filter-&gt;filter('this is my content');
+</code></pre>
+
 <p>The above example returns <code>ThisIsMyContent</code>.</p>
 <h2 id="separatortodash">SeparatorToDash</h2>
 <p>This filter modifies a given string such that <code>words with separators</code> are
@@ -426,15 +446,19 @@ converted to <code>words-with-separators</code>.</p>
   is a space.</li>
 </ul>
 <h3>Basic Usage</h3>
-<p> <pre class=codehilite><code class=language-php>$filter = new Zend\Filter\Word\SeparatorToDash(':');
+<pre><code class="language-php">$filter = new Zend\Filter\Word\SeparatorToDash(':');
 // or new Zend\Filter\Word\SeparatorToDash(array('separator' =&gt; ':'));
 
-print $filter-&gt;filter('this:is:my:content');</code></pre></p>
+print $filter-&gt;filter('this:is:my:content');
+</code></pre>
+
 <p>The above example returns <code>this-is-my-content</code>.</p>
 <h3>Default Behavior</h3>
-<p> <pre class=codehilite><code class=language-php>$filter = new Zend\Filter\Word\SeparatorToDash();
+<pre><code class="language-php">$filter = new Zend\Filter\Word\SeparatorToDash();
 
-print $filter-&gt;filter('this is my content');</code></pre></p>
+print $filter-&gt;filter('this is my content');
+</code></pre>
+
 <p>The above example returns <code>this-is-my-content</code>.</p>
 <h2 id="separatortoseparator">SeparatorToSeparator</h2>
 <p>This filter modifies a given string such that <code>words with separators</code> are
@@ -448,14 +472,18 @@ converted to <code>words-with-separators</code>.</p>
   default separator is a dash (<code>-</code>).</li>
 </ul>
 <h3>Basic Usage</h3>
-<p> <pre class=codehilite><code class=language-php>$filter = new Zend\Filter\Word\SeparatorToSeparator(':', '+');
+<pre><code class="language-php">$filter = new Zend\Filter\Word\SeparatorToSeparator(':', '+');
 
-print $filter-&gt;filter('this:is:my:content');</code></pre></p>
+print $filter-&gt;filter('this:is:my:content');
+</code></pre>
+
 <p>The above example returns <code>this+is+my+content</code>.</p>
 <h3>Default Behaviour</h3>
-<p> <pre class=codehilite><code class=language-php>$filter = new Zend\Filter\Word\SeparatorToSeparator();
+<pre><code class="language-php">$filter = new Zend\Filter\Word\SeparatorToSeparator();
 
-print $filter-&gt;filter('this is my content');</code></pre></p>
+print $filter-&gt;filter('this is my content');
+</code></pre>
+
 <p>The above example returns <code>this-is-my-content</code>.</p>
 <h2 id="underscoretocamelcase">UnderscoreToCamelCase</h2>
 <p>This filter modifies a given string such that <code>words_with_underscores</code> are
@@ -463,9 +491,11 @@ converted to <code>WordsWithUnderscores</code>.</p>
 <h3>Supported Options</h3>
 <p>There are no additional options for <code>Zend\Filter\Word\UnderscoreToCamelCase</code>:</p>
 <h3>Basic Usage</h3>
-<p> <pre class=codehilite><code class=language-php>$filter = new Zend\Filter\Word\UnderscoreToCamelCase();
+<pre><code class="language-php">$filter = new Zend\Filter\Word\UnderscoreToCamelCase();
 
-print $filter-&gt;filter('this_is_my_content');</code></pre></p>
+print $filter-&gt;filter('this_is_my_content');
+</code></pre>
+
 <p>The above example returns <code>ThisIsMyContent</code>.</p>
 <h2 id="underscoretoseparator">UnderscoreToSeparator</h2>
 <p>This filter modifies a given string such that <code>words_with_underscores</code> are
@@ -477,15 +507,19 @@ converted to <code>words with underscores</code>.</p>
   is a space.</li>
 </ul>
 <h3>Basic Usage</h3>
-<p> <pre class=codehilite><code class=language-php>$filter = new Zend\Filter\Word\UnderscoreToSeparator('+');
+<pre><code class="language-php">$filter = new Zend\Filter\Word\UnderscoreToSeparator('+');
 // or new Zend\Filter\Word\CamelCaseToSeparator(array('separator' =&gt; '+'));
 
-print $filter-&gt;filter('this_is_my_content');</code></pre></p>
+print $filter-&gt;filter('this_is_my_content');
+</code></pre>
+
 <p>The above example returns <code>this+is+my+content</code>.</p>
 <h3>Default Behavior</h3>
-<p> <pre class=codehilite><code class=language-php>$filter = new Zend\Filter\Word\UnderscoreToSeparator();
+<pre><code class="language-php">$filter = new Zend\Filter\Word\UnderscoreToSeparator();
 
-print $filter-&gt;filter('this_is_my_content');</code></pre></p>
+print $filter-&gt;filter('this_is_my_content');
+</code></pre>
+
 <p>The above example returns <code>this is my content</code>.</p>
 <h2 id="underscoretodash">UnderscoreToDash</h2>
 <p>This filter modifies a given string such that <code>words_with_underscores</code> are
@@ -493,9 +527,11 @@ converted to <code>words-with-underscores</code>.</p>
 <h3>Supported Options</h3>
 <p>There are no additional options for <code>Zend\Filter\Word\UnderscoreToDash</code>:</p>
 <h3>Basic Usage</h3>
-<p> <pre class=codehilite><code class=language-php>$filter = new Zend\Filter\Word\UnderscoreToDash();
+<pre><code class="language-php">$filter = new Zend\Filter\Word\UnderscoreToDash();
 
-print $filter-&gt;filter('this_is_my_content');</code></pre></p>
+print $filter-&gt;filter('this_is_my_content');
+</code></pre>
+
 <p>The above example returns <code>this-is-my-content</code>.</p>
 
 
@@ -668,7 +704,7 @@ print $filter-&gt;filter('this_is_my_content');</code></pre></p>
             
             <div class="col-md-9">
                 <h4 class="footer__headline">Copyright</h4>
-                <p>&copy; 2006-2019 by <a href="https://www.zend.com/">Zend</a>, a <a href="https://www.roguewave.com/">Rogue Wave Company</a>.</p>
+                <p>&copy; 2006-2020 by <a href="https://www.zend.com/">Zend</a> by <a href="https://www.perforce.com/">Perforce</a>.</p>
             </div>
 
             
@@ -676,10 +712,10 @@ print $filter-&gt;filter('this_is_my_content');</code></pre></p>
                 <h4 class="footer__headline">Support</h4>
                 <ul class="support__list">
                     <li class="support__list-item">
-                        <a href="https://discourse.zendframework.com" class="support__link" title="Forum"><i class="fa fa-comments"></i></a>
+                        <a href="https://discourse.laminas.dev" class="support__link" title="Forum"><i class="fa fa-comments"></i></a>
                     </li>
                     <li class="support__list-item">
-                        <a href="https://zendframework-slack.herokuapp.com" class="support__link" title="Chat"><i class="fa fa-slack"></i></a>
+                        <a href="https://laminas.dev/chat/" class="support__link" title="Chat"><i class="fa fa-slack"></i></a>
                     </li>
                     <li class="support__list-item">
                         <a href="https://github.com/zendframework" class="support__link" title="Github"><i class="fa fa-github"></i></a>
@@ -687,27 +723,28 @@ print $filter-&gt;filter('this_is_my_content');</code></pre></p>
                     <li class="support__list-item">
                         <a href="https://twitter.com/zfdevteam" class="support__link" title="Twitter"><i class="fa fa-twitter"></i></a>
                     </li>
-                    <li class="support__list-item">
-                        <a href="https://tinyletter.com/mwopzend" class="support__link" title="Newsletter"><i class="fa fa-envelope"></i></a>
-                    </li>
-                    <li class="support__list-item">
-                        <a href="https://framework.zend.com/blog/feed-rss.xml" class="support__link" title="Blog feed"><i class="fa fa-rss"></i></a>
-                    </li>
-                    <li class="support__list-item">
-                        <a href="https://framework.zend.com/security/feed" class="support__link" title="Security feed"><i class="fa fa-rss-square"></i></a>
-                    </li>
                 </ul>
             </div>
         </div>
     </div>
 </footer>
 
+<nav class="cookie-bar navbar navbar-fixed-bottom navbar-default hidden">
+    <div class="container">
+        <p class="navbar-text">
+            We use cookies to allow you to dismiss dialogs such as the Laminas
+            Project notification.
+        </p>
+        <button type="button" class="cookie-button btn btn-default navbar-btn">Allow Cookies</button>
+    </div>
+</nav>
+
     <script>
         var base_url = '..',
             siteName = 'zend-filter';
     </script>
-    <script src="../js/scripts-8d7ae56abf.js"></script>
-        <script src="../search/main.js"></script>
+    <script src="/js/scripts.js"></script>
+    <script src="../search/main.js"></script>
 
     
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">

@@ -7,12 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Programmatically filter and normalize data and files.">  
-    <link rel="canonical" href="https://docs.zendframework.com/zend-filter/inflector/">
+    <link rel="canonical" href="https://docs.zendframework.com/inflector/">
     <link rel="shortcut icon" href="../img/favicon.ico">
 
     <title>String Inflection - zend-filter - Zend Framework Docs</title>
 
-    <link rel="stylesheet" href="../css/styles-5cfabd53ee.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body id="page-top">
 
@@ -205,9 +205,9 @@
     <div class="laminas-announcement">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-                Zend Framework transitions to the Linux Foundation. <a href="https://getlaminas.org">Learn More.</a>
-            </div>
+            <div class="col-xs-12"><strong>
+                This package has moved. Visit its replacement, <a href="https://docs.laminas.dev/laminas-filter/">laminas/laminas-filter.</a>
+            </strong></div>
         </div>
     </div>
 </div>
@@ -301,7 +301,7 @@ lower case this; and finally, you want to separate the words using a dash
 <p><code>Zend\Filter\Inflector</code> implements <code>Zend\Filter\FilterInterface</code>; you perform
 inflection by calling <code>filter()</code> on the object instance.</p>
 <h2 id="transforming-mixedcase-and-camelcasetext-to-another-format">Transforming MixedCase and CamelCaseText to another Format</h2>
-<p> <pre class=codehilite><code class=language-php>$inflector = new Zend\Filter\Inflector('pages/:page.:suffix');
+<pre><code class="language-php">$inflector = new Zend\Filter\Inflector('pages/:page.:suffix');
 $inflector-&gt;setRules([
     ':page'  =&gt; ['Word\CamelCaseToDash', 'StringToLower'],
     'suffix' =&gt; 'html',
@@ -313,7 +313,9 @@ $filtered = $inflector-&gt;filter(['page' =&gt; $string]);
 
 $string   = 'this_is_not_camel_cased';
 $filtered = $inflector-&gt;filter(['page' =&gt; $string]);
-// pages/this_is_not_camel_cased.html</code></pre></p>
+// pages/this_is_not_camel_cased.html
+</code></pre>
+
 <h2 id="operation">Operation</h2>
 <p>An inflector requires a <strong>target</strong> and one or more <strong>rules</strong>. A target is
 basically a string that defines placeholders for variables you wish to
@@ -334,13 +336,17 @@ loading filters to use with inflection. By default, filters registered with
 <code>Zend\Filter\FilterPluginManager</code> are available. To access filters with that
 prefix but which occur deeper in the hierarchy, such as the various <code>Word</code>
 filters, simply strip off the <code>Zend\Filter</code> prefix:</p>
-<p> <pre class=codehilite><code class=language-php>// use Zend\Filter\Word\CamelCaseToDash as a rule
-$inflector-&gt;addRules(['script' =&gt; 'Word\CamelCaseToDash']);</code></pre></p>
+<pre><code class="language-php">// use Zend\Filter\Word\CamelCaseToDash as a rule
+$inflector-&gt;addRules(['script' =&gt; 'Word\CamelCaseToDash']);
+</code></pre>
+
 <p>To use custom filters, you have two choices: reference them by fully qualified
 class name (e.g., <code>My\Custom\Filter\Mungify</code>), or manipulate the composed
 <code>FilterPluginManager</code> instance.</p>
-<p> <pre class=codehilite><code class=language-php>$filters = $inflector-&gt;getPluginManager();
-$filters-&gt;addInvokableClass('mungify', 'My\Custom\Filter\Mungify');</code></pre></p>
+<pre><code class="language-php">$filters = $inflector-&gt;getPluginManager();
+$filters-&gt;addInvokableClass('mungify', 'My\Custom\Filter\Mungify');
+</code></pre>
+
 <h3>Setting the Inflector Target</h3>
 <p>The inflector target is a string with some placeholders for variables.
 Placeholders take the form of an identifier, a colon (<code>:</code>) by default, followed
@@ -348,19 +354,23 @@ by a variable name: <code>:script</code>, <code>:path</code>, etc. The <code>fil
 the identifier followed by the variable name being replaced.</p>
 <p>You can change the identifier using the <code>setTargetReplacementIdentifier()</code>
 method, or passing it as the fourth argument to the constructor:</p>
-<p> <pre class=codehilite><code class=language-php>// Via constructor:
+<pre><code class="language-php">// Via constructor:
 $inflector = new Zend\Filter\Inflector('#foo/#bar.#sfx', array(), null, '#');
 
 // Via accessor:
-$inflector-&gt;setTargetReplacementIdentifier('#');</code></pre></p>
+$inflector-&gt;setTargetReplacementIdentifier('#');
+</code></pre>
+
 <p>Typically, you will set the target via the constructor. However, you may want
 to re-set the target later. <code>setTarget()</code> can be used for this purpose:</p>
-<p> <pre class=codehilite><code class=language-php>$inflector-&gt;setTarget('layouts/:script.phtml');</code></pre></p>
+<pre><code class="language-php">$inflector-&gt;setTarget('layouts/:script.phtml');
+</code></pre>
+
 <p>Additionally, you may wish to have a class member for your class that you can
 use to keep the inflector target updated &mdash; without needing to directly update
 the target each time (thus saving on method calls). <code>setTargetReference()</code>
 allows you to do this:</p>
-<p> <pre class=codehilite><code class=language-php>class Foo
+<pre><code class="language-php">class Foo
 {
     /**
      * @var string Inflector target
@@ -388,7 +398,9 @@ allows you to do this:</p>
         $this-&gt;target = $target;
         return $this;
     }
-}</code></pre></p>
+}
+</code></pre>
+
 <h2 id="inflection-rules">Inflection Rules</h2>
 <p>As mentioned in the introduction, there are two types of rules: static and filter-based.</p>
 <blockquote>
@@ -407,17 +419,19 @@ leaving <code>Dir</code> inside of the target uninflected.</p>
 the target that will typically be static, but which you want to allow the
 developer to modify. Use the <code>setStaticRule()</code> method to set or modify the
 rule:</p>
-<p> <pre class=codehilite><code class=language-php>$inflector = new Zend\Filter\Inflector(':script.:suffix');
+<pre><code class="language-php">$inflector = new Zend\Filter\Inflector(':script.:suffix');
 $inflector-&gt;setStaticRule('suffix', 'phtml');
 
 // change it later:
-$inflector-&gt;setStaticRule('suffix', 'php');</code></pre></p>
+$inflector-&gt;setStaticRule('suffix', 'php');
+</code></pre>
+
 <p>Much like the target itself, you can also bind a static rule to a reference,
 allowing you to update a single variable instead of require a method call; this
 is often useful when your class uses an inflector internally, and you don't
 want your users to need to fetch the inflector in order to update it. The
 <code>setStaticRuleReference()</code> method is used to accomplish this:</p>
-<p> <pre class=codehilite><code class=language-php>class Foo
+<pre><code class="language-php">class Foo
 {
     /**
      * @var string Suffix
@@ -445,7 +459,9 @@ want your users to need to fetch the inflector in order to update it. The
         $this-&gt;suffix = $suffix;
         return $this;
     }
-}</code></pre></p>
+}
+</code></pre>
+
 <h3>Filter-Based Inflector Rules</h3>
 <p><code>Zend\Filter</code> filters may be used as inflector rules as well. Just like static
 rules, these are bound to a target variable; unlike static rules, you may
@@ -464,7 +480,7 @@ ways:</p>
   <code>Zend\Filter\FilterInterface</code> may be passed as a filter.</li>
 <li><strong>Array</strong>. An array of one or more strings or filter objects as defined above.</li>
 </ul>
-<p> <pre class=codehilite><code class=language-php>$inflector = new Zend\Filter\Inflector(':script.:suffix');
+<pre><code class="language-php">$inflector = new Zend\Filter\Inflector(':script.:suffix');
 
 // Set rule to use Zend\Filter\Word\CamelCaseToDash filter
 $inflector-&gt;setFilterRule('script', 'Word\CamelCaseToDash');
@@ -476,7 +492,9 @@ $inflector-&gt;addFilterRule('script', new Zend\Filter\StringToLower());
 $inflector-&gt;setFilterRule('script', [
     'Word\CamelCaseToDash',
     new Zend\Filter\StringToLower()
-]);</code></pre></p>
+]);
+</code></pre>
+
 <h2 id="setting-many-rules-at-once">Setting many Rules at once</h2>
 <p>Typically, it's easier to set many rules at once than to configure a single
 variable and its inflection rules one at a time. <code>Zend\Filter\Inflector</code>'s
@@ -490,7 +508,7 @@ according to the following notation:</p>
 <li><strong>No prefix</strong>: static rule.</li>
 </ul>
 <p>As an example:</p>
-<p> <pre class=codehilite><code class=language-php>// Could also use setRules() with this notation:
+<pre><code class="language-php">// Could also use setRules() with this notation:
 $inflector-&gt;addRules([
     // Filter rules:
     ':controller' =&gt; ['Word\CamelCaseToUnderscore','StringToLower'],
@@ -498,7 +516,9 @@ $inflector-&gt;addRules([
 
     // Static rule:
     'suffix'      =&gt; 'phtml',
-]);</code></pre></p>
+]);
+</code></pre>
+
 <h2 id="utility-methods">Utility Methods</h2>
 <p><code>Zend\Filter\Inflector</code> has a number of utility methods for retrieving and
 setting the plugin loader, manipulating and retrieving rules, and controlling
@@ -537,14 +557,15 @@ your inflectors, by passing either type to either the constructor or the
   that specify either values or arrays of values, consistent with <code>addRules()</code>.</li>
 </ul>
 <p>As examples:</p>
-<p> <pre class=codehilite><code class=language-php>// $options implements Traversable:
+<pre><code class="language-php">// $options implements Traversable:
 
 // With the constructor:
 $inflector = new Zend\Filter\Inflector($options);
 
 // Or with setOptions():
 $inflector = new Zend\Filter\Inflector();
-$inflector-&gt;setOptions($options);</code></pre></p>
+$inflector-&gt;setOptions($options);
+</code></pre>
 
 
 
@@ -716,7 +737,7 @@ $inflector-&gt;setOptions($options);</code></pre></p>
             
             <div class="col-md-9">
                 <h4 class="footer__headline">Copyright</h4>
-                <p>&copy; 2006-2019 by <a href="https://www.zend.com/">Zend</a>, a <a href="https://www.roguewave.com/">Rogue Wave Company</a>.</p>
+                <p>&copy; 2006-2020 by <a href="https://www.zend.com/">Zend</a> by <a href="https://www.perforce.com/">Perforce</a>.</p>
             </div>
 
             
@@ -724,10 +745,10 @@ $inflector-&gt;setOptions($options);</code></pre></p>
                 <h4 class="footer__headline">Support</h4>
                 <ul class="support__list">
                     <li class="support__list-item">
-                        <a href="https://discourse.zendframework.com" class="support__link" title="Forum"><i class="fa fa-comments"></i></a>
+                        <a href="https://discourse.laminas.dev" class="support__link" title="Forum"><i class="fa fa-comments"></i></a>
                     </li>
                     <li class="support__list-item">
-                        <a href="https://zendframework-slack.herokuapp.com" class="support__link" title="Chat"><i class="fa fa-slack"></i></a>
+                        <a href="https://laminas.dev/chat/" class="support__link" title="Chat"><i class="fa fa-slack"></i></a>
                     </li>
                     <li class="support__list-item">
                         <a href="https://github.com/zendframework" class="support__link" title="Github"><i class="fa fa-github"></i></a>
@@ -735,27 +756,28 @@ $inflector-&gt;setOptions($options);</code></pre></p>
                     <li class="support__list-item">
                         <a href="https://twitter.com/zfdevteam" class="support__link" title="Twitter"><i class="fa fa-twitter"></i></a>
                     </li>
-                    <li class="support__list-item">
-                        <a href="https://tinyletter.com/mwopzend" class="support__link" title="Newsletter"><i class="fa fa-envelope"></i></a>
-                    </li>
-                    <li class="support__list-item">
-                        <a href="https://framework.zend.com/blog/feed-rss.xml" class="support__link" title="Blog feed"><i class="fa fa-rss"></i></a>
-                    </li>
-                    <li class="support__list-item">
-                        <a href="https://framework.zend.com/security/feed" class="support__link" title="Security feed"><i class="fa fa-rss-square"></i></a>
-                    </li>
                 </ul>
             </div>
         </div>
     </div>
 </footer>
 
+<nav class="cookie-bar navbar navbar-fixed-bottom navbar-default hidden">
+    <div class="container">
+        <p class="navbar-text">
+            We use cookies to allow you to dismiss dialogs such as the Laminas
+            Project notification.
+        </p>
+        <button type="button" class="cookie-button btn btn-default navbar-btn">Allow Cookies</button>
+    </div>
+</nav>
+
     <script>
         var base_url = '..',
             siteName = 'zend-filter';
     </script>
-    <script src="../js/scripts-8d7ae56abf.js"></script>
-        <script src="../search/main.js"></script>
+    <script src="/js/scripts.js"></script>
+    <script src="../search/main.js"></script>
 
     
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">

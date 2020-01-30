@@ -7,12 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Programmatically filter and normalize data and files.">  
-    <link rel="canonical" href="https://docs.zendframework.com/zend-filter/intro/">
+    <link rel="canonical" href="https://docs.zendframework.com/intro/">
     <link rel="shortcut icon" href="../img/favicon.ico">
 
     <title>Introduction - zend-filter - Zend Framework Docs</title>
 
-    <link rel="stylesheet" href="../css/styles-5cfabd53ee.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body id="page-top">
 
@@ -205,9 +205,9 @@
     <div class="laminas-announcement">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-                Zend Framework transitions to the Linux Foundation. <a href="https://getlaminas.org">Learn More.</a>
-            </div>
+            <div class="col-xs-12"><strong>
+                This package has moved. Visit its replacement, <a href="https://docs.laminas.dev/laminas-filter/">laminas/laminas-filter.</a>
+            </strong></div>
         </div>
     </div>
 </div>
@@ -308,16 +308,20 @@ perform some transformations upon input data.</p>
 to be implemented by a filter class.</p>
 <p>Following is a basic example of using a filter upon two input data, the
 ampersand (<code>&amp;</code>) and double quote (<code>"</code>) characters:</p>
-<p> <pre class=codehilite><code class=language-php>$htmlEntities = new Zend\Filter\HtmlEntities();
+<pre><code class="language-php">$htmlEntities = new Zend\Filter\HtmlEntities();
 
 echo $htmlEntities-&gt;filter('&amp;'); // &amp;amp;
-echo $htmlEntities-&gt;filter('&quot;'); // &amp;quot;</code></pre></p>
+echo $htmlEntities-&gt;filter('&quot;'); // &amp;quot;
+</code></pre>
+
 <p>Also, if a filter inherits from <code>Zend\Filter\AbstractFilter</code> (as do all of the
 out-of-the-box filters), you can also use them as invokables:</p>
-<p> <pre class=codehilite><code class=language-php>$strtolower = new Zend\Filter\StringToLower;
+<pre><code class="language-php">$strtolower = new Zend\Filter\StringToLower;
 
 echo $strtolower('I LOVE ZF2!'); // i love zf2!
-$zf2love = $strtolower('I LOVE ZF2!');</code></pre></p>
+$zf2love = $strtolower('I LOVE ZF2!');
+</code></pre>
+
 <h2 id="using-the-staticfilter">Using the StaticFilter</h2>
 <p>If it is inconvenient to load a given filter class and create an instance of the
 filter, you can use <code>StaticFilter</code> with its <code>execute()</code> method as an alternative
@@ -326,14 +330,18 @@ you would pass to the <code>filter()</code> method. The second argument is a str
 corresponds to the basename of the filter class, relative to the <code>Zend\Filter</code>
 namespace. The <code>execute()</code> method automatically loads the class, creates an
 instance, and applies the <code>filter()</code> method to the data input.</p>
-<p> <pre class=codehilite><code class=language-php>echo StaticFilter::execute('&amp;', 'HtmlEntities');</code></pre></p>
+<pre><code class="language-php">echo StaticFilter::execute('&amp;', 'HtmlEntities');
+</code></pre>
+
 <p>You can also pass an array of constructor arguments, if they are needed for the
 filter class:</p>
-<p> <pre class=codehilite><code class=language-php>echo StaticFilter::execute(
+<pre><code class="language-php">echo StaticFilter::execute(
     '&quot;',
     'HtmlEntities',
     ['quotestyle' =&gt; ENT_QUOTES]
-);</code></pre></p>
+);
+</code></pre>
+
 <p>The static usage can be convenient for invoking a filter ad hoc, but if you have
 the need to run a filter for multiple inputs, it’s more efficient to follow the
 first example above, creating an instance of the filter object and calling its
@@ -343,18 +351,20 @@ and validator classes on demand to process sets of input data. See the
 <a href="../filter-chains/">FilterChain</a> chapter for more details.</p>
 <p>You can set and receive the <code>FilterPluginManager</code> for the <code>StaticFilter</code> to
 amend the standard filter classes.</p>
-<p> <pre class=codehilite><code class=language-php>$pluginManager = StaticFilter::getPluginManager()-&gt;setInvokableClass(
+<pre><code class="language-php">$pluginManager = StaticFilter::getPluginManager()-&gt;setInvokableClass(
     'myNewFilter',
     'MyCustom\Filter\MyNewFilter'
 );
 
-StaticFilter::setPluginManager(new MyFilterPluginManager());</code></pre></p>
+StaticFilter::setPluginManager(new MyFilterPluginManager());
+</code></pre>
+
 <p>This is useful when adding custom filters to be used by the <code>StaticFilter</code>.</p>
 <h2 id="double-filtering">Double filtering</h2>
 <p>When using two filters in succession, you have to keep in mind that it is
 often not possible to get the original output by using the opposite filter. Take
 the following example:</p>
-<p> <pre class=codehilite><code class=language-php>$original = 'my_original_content';
+<pre><code class="language-php">$original = 'my_original_content';
 
 // Attach a filter
 $filter   = new Zend\Filter\Word\UnderscoreToCamelCase();
@@ -362,7 +372,9 @@ $filtered = $filter-&gt;filter($original);
 
 // Use it's opposite
 $filter2  = new Zend\Filter\Word\CamelCaseToUnderscore();
-$filtered = $filter2-&gt;filter($filtered)</code></pre></p>
+$filtered = $filter2-&gt;filter($filtered)
+</code></pre>
+
 <p>The above code example could lead to the impression that you will get the
 original output after the second filter has been applied. But thinking logically
 this is not the case. After applying the first filter, <code>my_original_content</code> will
@@ -375,10 +387,12 @@ given input.</p>
 <p>If you wish to indicate that your zend-mvc module provides filters, have your
 <code>Module</code> class implement <code>Zend\Filter\FilterProviderInterface</code>, which defines
 the method:</p>
-<p> <pre class=codehilite><code class=language-php>/**
+<pre><code class="language-php">/**
  * @return array
  */
-public function getFilterConfig();</code></pre></p>
+public function getFilterConfig();
+</code></pre>
+
 <p>The method should return an array of configuration following the
 <a href="https://docs.zendframework.com/zend-servicemanager/configuring-the-service-manager/">zend-servicemanager configuration format</a>.</p>
 <p>If you are not using zend-mvc, but are using a dependency injection container
@@ -558,7 +572,7 @@ implementation of the <code>FilterProviderInterface</code>.)</p>
             
             <div class="col-md-9">
                 <h4 class="footer__headline">Copyright</h4>
-                <p>&copy; 2006-2019 by <a href="https://www.zend.com/">Zend</a>, a <a href="https://www.roguewave.com/">Rogue Wave Company</a>.</p>
+                <p>&copy; 2006-2020 by <a href="https://www.zend.com/">Zend</a> by <a href="https://www.perforce.com/">Perforce</a>.</p>
             </div>
 
             
@@ -566,10 +580,10 @@ implementation of the <code>FilterProviderInterface</code>.)</p>
                 <h4 class="footer__headline">Support</h4>
                 <ul class="support__list">
                     <li class="support__list-item">
-                        <a href="https://discourse.zendframework.com" class="support__link" title="Forum"><i class="fa fa-comments"></i></a>
+                        <a href="https://discourse.laminas.dev" class="support__link" title="Forum"><i class="fa fa-comments"></i></a>
                     </li>
                     <li class="support__list-item">
-                        <a href="https://zendframework-slack.herokuapp.com" class="support__link" title="Chat"><i class="fa fa-slack"></i></a>
+                        <a href="https://laminas.dev/chat/" class="support__link" title="Chat"><i class="fa fa-slack"></i></a>
                     </li>
                     <li class="support__list-item">
                         <a href="https://github.com/zendframework" class="support__link" title="Github"><i class="fa fa-github"></i></a>
@@ -577,27 +591,28 @@ implementation of the <code>FilterProviderInterface</code>.)</p>
                     <li class="support__list-item">
                         <a href="https://twitter.com/zfdevteam" class="support__link" title="Twitter"><i class="fa fa-twitter"></i></a>
                     </li>
-                    <li class="support__list-item">
-                        <a href="https://tinyletter.com/mwopzend" class="support__link" title="Newsletter"><i class="fa fa-envelope"></i></a>
-                    </li>
-                    <li class="support__list-item">
-                        <a href="https://framework.zend.com/blog/feed-rss.xml" class="support__link" title="Blog feed"><i class="fa fa-rss"></i></a>
-                    </li>
-                    <li class="support__list-item">
-                        <a href="https://framework.zend.com/security/feed" class="support__link" title="Security feed"><i class="fa fa-rss-square"></i></a>
-                    </li>
                 </ul>
             </div>
         </div>
     </div>
 </footer>
 
+<nav class="cookie-bar navbar navbar-fixed-bottom navbar-default hidden">
+    <div class="container">
+        <p class="navbar-text">
+            We use cookies to allow you to dismiss dialogs such as the Laminas
+            Project notification.
+        </p>
+        <button type="button" class="cookie-button btn btn-default navbar-btn">Allow Cookies</button>
+    </div>
+</nav>
+
     <script>
         var base_url = '..',
             siteName = 'zend-filter';
     </script>
-    <script src="../js/scripts-8d7ae56abf.js"></script>
-        <script src="../search/main.js"></script>
+    <script src="/js/scripts.js"></script>
+    <script src="../search/main.js"></script>
 
     
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
